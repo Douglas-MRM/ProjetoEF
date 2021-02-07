@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 
 public class ConexaoMySql {
 
-    private static final String url = "jdbc:mysql://localhost/bd_sisBike";
+    private static final String url = "jdbc:mysql://localhost/bd_systemEF";
     private static final String user = "root";
     private static final String password = "root";                             //
     //private static final String password = "S01l05s23l07";

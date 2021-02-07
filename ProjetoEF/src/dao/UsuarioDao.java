@@ -89,13 +89,13 @@ public class UsuarioDao {
         return userList;
     }
 
-    public Usuario login(String cpf, String password) {
+    public Usuario login(String nome, String password) {
         Connection con = ConexaoMySql.getConexao();
         Usuario user = new Usuario();
-        String sql = "SELECT * FROM usuario WHERE cpf_user = ? and senha_user = md5(?)";
+        String sql = "SELECT * FROM usuario WHERE nome_user = ? and senha_user = md5(?)";
         try {
             PreparedStatement smt = con.prepareStatement(sql);
-            smt.setString(1, cpf);
+            smt.setString(1, nome);
             smt.setString(2, password);
             ResultSet re = smt.executeQuery();
             re.next();

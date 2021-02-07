@@ -1,82 +1,104 @@
 package view;
 
 import dao.UsuarioDao;
+import funcoes.Mensagem;
 import java.awt.Color;
-import java.awt.Point;
-import javax.swing.JOptionPane;
 import mapeamento.Usuario;
 
-public class viewLogin extends javax.swing.JFrame {
+public class ViewLogin extends javax.swing.JFrame {
 
-    private Point point = new Point();
-
-    public viewLogin() {
+    public ViewLogin() {
         initComponents();
 
-    }
-
-    public void Mensagem(String mensagem, String titulo, int icone) {
-        JOptionPane.showMessageDialog(null, mensagem, titulo, icone);
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        PaineBack = new javax.swing.JPanel();
+        LB_Titulo = new javax.swing.JLabel();
+        LB_Nome = new javax.swing.JLabel();
+        PainelNome = new javax.swing.JPanel();
+        edNome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        LB_Senha = new javax.swing.JLabel();
+        PainelSenha = new javax.swing.JPanel();
+        edSenha = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
-        LB_RecoverPassword = new javax.swing.JLabel();
         BT_Logar = new javax.swing.JButton();
         BT_Sair = new javax.swing.JButton();
+        LB_RecoverPassword = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        edCPF = new javax.swing.JFormattedTextField();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        edSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(153, 153, 153));
         setUndecorated(true);
-        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                formMouseDragged(evt);
+
+        PaineBack.setBackground(new java.awt.Color(204, 204, 204));
+
+        LB_Titulo.setFont(new java.awt.Font("DeVinne Txt BT", 1, 24)); // NOI18N
+        LB_Titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LB_Titulo.setText("Sing in to Sisbike");
+
+        LB_Nome.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        LB_Nome.setText("NOME");
+
+        PainelNome.setBackground(new java.awt.Color(255, 255, 255));
+
+        edNome.setBorder(null);
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/user_usuario.png"))); // NOI18N
+
+        javax.swing.GroupLayout PainelNomeLayout = new javax.swing.GroupLayout(PainelNome);
+        PainelNome.setLayout(PainelNomeLayout);
+        PainelNomeLayout.setHorizontalGroup(
+            PainelNomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelNomeLayout.createSequentialGroup()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(edNome))
+        );
+        PainelNomeLayout.setVerticalGroup(
+            PainelNomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(edNome)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+        );
+
+        LB_Senha.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        LB_Senha.setText("SENHA");
+
+        PainelSenha.setBackground(new java.awt.Color(255, 255, 255));
+
+        edSenha.setBorder(null);
+        edSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edSenhaActionPerformed(evt);
             }
         });
-        addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                formMouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                formMousePressed(evt);
-            }
-        });
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/padlock.png"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel2.setText("CPF");
-
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel3.setText("SENHA");
-
-        LB_RecoverPassword.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        LB_RecoverPassword.setText("Esqueceu sua senha?");
-        LB_RecoverPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        LB_RecoverPassword.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                LB_RecoverPasswordMouseClicked(evt);
-            }
-        });
+        javax.swing.GroupLayout PainelSenhaLayout = new javax.swing.GroupLayout(PainelSenha);
+        PainelSenha.setLayout(PainelSenhaLayout);
+        PainelSenhaLayout.setHorizontalGroup(
+            PainelSenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelSenhaLayout.createSequentialGroup()
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(edSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE))
+        );
+        PainelSenhaLayout.setVerticalGroup(
+            PainelSenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(edSenha)
+            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+        );
 
         BT_Logar.setBackground(new java.awt.Color(138, 43, 226));
         BT_Logar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        BT_Logar.setForeground(new java.awt.Color(255, 255, 255));
         BT_Logar.setText("LOGAR");
-        BT_Logar.setBorder(null);
-        BT_Logar.setBorderPainted(false);
         BT_Logar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BT_Logar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -94,10 +116,7 @@ public class viewLogin extends javax.swing.JFrame {
 
         BT_Sair.setBackground(new java.awt.Color(178, 34, 34));
         BT_Sair.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        BT_Sair.setForeground(new java.awt.Color(255, 255, 255));
         BT_Sair.setText("SAIR");
-        BT_Sair.setBorder(null);
-        BT_Sair.setBorderPainted(false);
         BT_Sair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BT_Sair.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -113,107 +132,65 @@ public class viewLogin extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("DeVinne Txt BT", 1, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Sign in to SisBike");
-
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/user_login.png"))); // NOI18N
-
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cpf.png"))); // NOI18N
-
-        edCPF.setBorder(null);
-        try {
-            edCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(edCPF))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-            .addComponent(edCPF)
-        );
-
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/padlock.png"))); // NOI18N
-
-        edSenha.setBorder(null);
-        edSenha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edSenhaActionPerformed(evt);
+        LB_RecoverPassword.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        LB_RecoverPassword.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LB_RecoverPassword.setText("Esqueceu sua senha?");
+        LB_RecoverPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        LB_RecoverPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                LB_RecoverPasswordMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                LB_RecoverPasswordMouseExited(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(edSenha))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-            .addComponent(edSenha)
-        );
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/login.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(LB_RecoverPassword)
-                    .addComponent(BT_Sair, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BT_Logar, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(30, Short.MAX_VALUE))
+        javax.swing.GroupLayout PaineBackLayout = new javax.swing.GroupLayout(PaineBack);
+        PaineBack.setLayout(PaineBackLayout);
+        PaineBackLayout.setHorizontalGroup(
+            PaineBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(LB_Titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(PaineBackLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(PaineBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PaineBackLayout.createSequentialGroup()
+                        .addComponent(BT_Logar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BT_Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(LB_Senha, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LB_Nome, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PainelNome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PainelSenha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(84, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PaineBackLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LB_RecoverPassword)
+                .addGap(156, 156, 156))
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        PaineBackLayout.setVerticalGroup(
+            PaineBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PaineBackLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jLabel6)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1)
+                .addComponent(LB_Titulo)
                 .addGap(27, 27, 27)
-                .addComponent(jLabel2)
+                .addComponent(LB_Nome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(PainelNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
-                .addComponent(jLabel3)
+                .addComponent(LB_Senha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addComponent(BT_Logar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(BT_Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
+                .addComponent(PainelSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70)
+                .addGroup(PaineBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BT_Logar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BT_Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(55, 55, 55)
                 .addComponent(LB_RecoverPassword)
                 .addContainerGap())
         );
@@ -222,11 +199,11 @@ public class viewLogin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(PaineBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(PaineBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -235,120 +212,77 @@ public class viewLogin extends javax.swing.JFrame {
 
     private void acaoLogin() {
         UsuarioDao userdao = new UsuarioDao();
-        Usuario user = userdao.login(edCPF.getText(), edSenha.getText());
-        
+        Usuario user = userdao.login(edNome.getText(), edSenha.getText());
+
         if (user.getId_user() > 0) {
 
             //Redirecionamento conforme o TIPO DO USUÁRIO
             String type = user.getTipe();
-/*
+
             if (type.equals("Administrador")) {
-                viewMenuAdministrador menu = new viewMenuAdministrador(user);
+                ViewMenuAdmin menu = new ViewMenuAdmin(user);
                 menu.setVisible(true);
                 this.dispose();
                 menu.setLocationRelativeTo(menu);
 
             } else {
-                if (type.equals("Gerente")) {
-                    viewMenuGerente menuFuncionario = new viewMenuGerente(user);
+                if (type.equals("Funcionário")) {
+                    ViewMenu menuFuncionario = new ViewMenu(user);
                     menuFuncionario.setVisible(true);
                     this.dispose();
                     menuFuncionario.setLocationRelativeTo(menuFuncionario);
 
-                } else {
-                    if (type.equals("Funcionário")) {
-                        viewMenuFuncionario menuFuncionario = new viewMenuFuncionario(user);
-                        menuFuncionario.setVisible(true);
-                        this.dispose();
-                        menuFuncionario.setLocationRelativeTo(menuFuncionario);
-                    } 
                 }
-
             }
 
         } else {
-            Mensagem("CPF ou senha incorreto!", "SisBike diz:", 1);
-        }*/
+            Mensagem msg = new Mensagem();
+            msg.Mensagem("CPF ou senha incorreto!", "SisBike diz:", 1);
+        }
     }
-/*
+
+    private void BT_LogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_LogarActionPerformed
+        acaoLogin();
+    }//GEN-LAST:event_BT_LogarActionPerformed
+
     private void BT_SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_SairActionPerformed
         System.exit(0);
     }//GEN-LAST:event_BT_SairActionPerformed
 
-    private void BT_LogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_LogarActionPerformed
-        acaoLogin();
-
-        /* Efeito para fazer o Jframe tremer'...
-        Point p = new Point();        
-        viewLogin login = this;
-        new Thread() {
-            @Override
-            public void run() {
-                try {
-                    for (int i = 0; i < 4; i++) {
-
-                        login.setLocation(p.x - 10, p.y);
-                        sleep(20);
-                        login.setLocation(p.x + 10, p.y);
-                        sleep(20);
-                    }
-                    //login.setLocation(p.x, p.y);
-
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(viewLogin.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-            }
-        }.start();
-    }//GEN-LAST:event_BT_LogarActionPerformed
-/*
     private void BT_LogarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_LogarMouseEntered
         BT_Logar.setBackground(new Color(235, 235, 235));
         BT_Logar.setForeground(new Color(138, 43, 226));
     }//GEN-LAST:event_BT_LogarMouseEntered
-
-    private void BT_SairMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_SairMouseEntered
-        BT_Sair.setBackground(new Color(235, 235, 235));
-        BT_Sair.setForeground(new Color(178, 34, 34));
-    }//GEN-LAST:event_BT_SairMouseEntered
 
     private void BT_LogarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_LogarMouseExited
         BT_Logar.setBackground(new Color(138, 43, 226));
         BT_Logar.setForeground(Color.WHITE);
     }//GEN-LAST:event_BT_LogarMouseExited
 
+    private void BT_SairMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_SairMouseEntered
+        BT_Sair.setBackground(new Color(235, 235, 235));
+        BT_Sair.setForeground(new Color(178, 34, 34));
+    }//GEN-LAST:event_BT_SairMouseEntered
+
     private void BT_SairMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_SairMouseExited
         BT_Sair.setBackground(new Color(178, 34, 34));
         BT_Sair.setForeground(Color.WHITE);
     }//GEN-LAST:event_BT_SairMouseExited
 
-    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+    private void LB_RecoverPasswordMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LB_RecoverPasswordMouseEntered
+        LB_RecoverPassword.setForeground(new Color(153, 0, 0));
+    }//GEN-LAST:event_LB_RecoverPasswordMouseEntered
 
-    }//GEN-LAST:event_formMouseClicked
-
-    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
-        point.x = evt.getX();
-        point.y = evt.getY();
-    }//GEN-LAST:event_formMousePressed
-
-    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
-        Point p = this.getLocation();
-        this.setLocation(p.x + evt.getX() - point.x, p.y + evt.getY() - point.y);
-    }//GEN-LAST:event_formMouseDragged
+    private void LB_RecoverPasswordMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LB_RecoverPasswordMouseExited
+        LB_RecoverPassword.setForeground(Color.BLACK);
+    }//GEN-LAST:event_LB_RecoverPasswordMouseExited
 
     private void edSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edSenhaActionPerformed
         acaoLogin();
     }//GEN-LAST:event_edSenhaActionPerformed
 
-    private void LB_RecoverPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LB_RecoverPasswordMouseClicked
-        Mensagem("Entre em contato por e-mail: atendimento.sisbike@gmail.com", "SisBike Informa:", 2);
-    }//GEN-LAST:event_LB_RecoverPasswordMouseClicked
-
     public static void main(String args[]) {
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -357,18 +291,20 @@ public class viewLogin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(viewVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(viewVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(viewVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(viewVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new viewLogin().setVisible(true);              
+                new ViewLogin().setVisible(true);
             }
         });
     }
@@ -376,17 +312,21 @@ public class viewLogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BT_Logar;
     private javax.swing.JButton BT_Sair;
+    private javax.swing.JLabel LB_Nome;
     private javax.swing.JLabel LB_RecoverPassword;
-    private javax.swing.JFormattedTextField edCPF;
+    private javax.swing.JLabel LB_Senha;
+    private javax.swing.JLabel LB_Titulo;
+    private javax.swing.JPanel PaineBack;
+    private javax.swing.JPanel PainelNome;
+    private javax.swing.JPanel PainelSenha;
+    private javax.swing.JTextField edNome;
     private javax.swing.JPasswordField edSenha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel6;
     // End of variables declaration//GEN-END:variables
+
+    private void Mensagem(String cpf_ou_senha_incorreto, String sisBike_diz, int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
