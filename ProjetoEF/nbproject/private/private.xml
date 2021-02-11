@@ -3,8 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/dougl/Documents/NetBeansProjects/ProjetoEF/src/view/ViewLogin.java</file>
-            <file>file:/C:/Users/dougl/Documents/NetBeansProjects/ProjetoEF/src/conexao/ConexaoMySql.java</file>
+            <file>file:/C:/Users/dougl/Documents/NetBeansProjects/ProjetoEF/ProjetoEF/src/view/ViewAgenda.java</file>
+            <file>file:/C:/Users/dougl/Documents/NetBeansProjects/ProjetoEF/ProjetoEF/src/view/ViewLogin.java</file>
+            <file>file:/C:/Users/dougl/Documents/NetBeansProjects/ProjetoEF/ProjetoEF/src/view/ViewCompra.java</file>
+            <file>file:/C:/Users/dougl/Documents/NetBeansProjects/ProjetoEF/ProjetoEF/src/view/ViewUsuario.java</file>
+            <file>file:/C:/Users/dougl/Documents/NetBeansProjects/ProjetoEF/ProjetoEF/src/view/viewConfigUsuario.java</file>
         </group>
     </open-files>
 </project-private>
