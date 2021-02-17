@@ -10,6 +10,7 @@ public class ViewMenuAdmin extends javax.swing.JFrame {
 
     public ViewMenuAdmin(Usuario user) {
         initComponents();
+        UsuarioLogado = user;
         setExtendedState(MAXIMIZED_BOTH);
         MsgWelcome(user);
 
@@ -40,6 +41,7 @@ public class ViewMenuAdmin extends javax.swing.JFrame {
         BT_Compra = new javax.swing.JButton();
         BT_Usuarios = new javax.swing.JButton();
         BT_Agenda = new javax.swing.JButton();
+        BT_Controle = new javax.swing.JButton();
         LB_LogoEF = new javax.swing.JLabel();
         Barra_Menu = new javax.swing.JMenuBar();
         Configuracao = new javax.swing.JMenu();
@@ -123,18 +125,42 @@ public class ViewMenuAdmin extends javax.swing.JFrame {
             }
         });
 
+        BT_Controle.setBackground(new java.awt.Color(30, 144, 255));
+        BT_Controle.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        BT_Controle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/controle.png"))); // NOI18N
+        BT_Controle.setText("CONTROLE");
+        BT_Controle.setBorder(null);
+        BT_Controle.setBorderPainted(false);
+        BT_Controle.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BT_Controle.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BT_Controle.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        BT_Controle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                BT_ControleMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BT_ControleMouseExited(evt);
+            }
+        });
+        BT_Controle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BT_ControleActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PainelButtonsLayout = new javax.swing.GroupLayout(PainelButtons);
         PainelButtons.setLayout(PainelButtonsLayout);
         PainelButtonsLayout.setHorizontalGroup(
             PainelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelButtonsLayout.createSequentialGroup()
                 .addContainerGap(216, Short.MAX_VALUE)
-                .addGroup(PainelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(PainelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(BT_Compra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(PainelButtonsLayout.createSequentialGroup()
-                        .addComponent(BT_Agenda, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(BT_Usuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(BT_Agenda, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(PainelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(BT_Usuarios, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                    .addComponent(BT_Controle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(216, Short.MAX_VALUE))
         );
         PainelButtonsLayout.setVerticalGroup(
@@ -145,7 +171,9 @@ public class ViewMenuAdmin extends javax.swing.JFrame {
                     .addComponent(BT_Agenda, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                     .addComponent(BT_Usuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(BT_Compra, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(PainelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BT_Compra, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BT_Controle, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
 
@@ -223,8 +251,8 @@ public class ViewMenuAdmin extends javax.swing.JFrame {
     // ITENS MENU \\
 
     private void MI_ConfigurarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MI_ConfigurarUsuarioActionPerformed
-        viewConfigUsuario configUser = new viewConfigUsuario();
-        configUser.setVisible(true);
+        ViewSubLogin subLogin = new ViewSubLogin(UsuarioLogado, this, rootPaneCheckingEnabled);
+        subLogin.setVisible(true);
     }//GEN-LAST:event_MI_ConfigurarUsuarioActionPerformed
 
     private void MI_TrocarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MI_TrocarUsuarioActionPerformed
@@ -245,17 +273,17 @@ public class ViewMenuAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_BT_AgendaActionPerformed
 
     private void BT_UsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_UsuariosActionPerformed
-       ViewUsuario usuario = new ViewUsuario();
-       usuario.setVisible(true);
+        ViewUsuario usuario = new ViewUsuario();
+        usuario.setVisible(true);
     }//GEN-LAST:event_BT_UsuariosActionPerformed
 
     private void BT_CompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_CompraActionPerformed
-        ViewCompra compra = new ViewCompra();
+        ViewListaCompra compra = new ViewListaCompra();
         compra.setVisible(true);
     }//GEN-LAST:event_BT_CompraActionPerformed
-    
+
     // EVENTOS \\
-    
+
     private void BT_AgendaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_AgendaMouseEntered
         BT_Agenda.setBackground(new Color(235, 235, 235));
         BT_Agenda.setForeground(new Color(30, 144, 255));
@@ -286,9 +314,25 @@ public class ViewMenuAdmin extends javax.swing.JFrame {
         BT_Compra.setForeground(Color.BLACK);
     }//GEN-LAST:event_BT_CompraMouseExited
 
+    private void BT_ControleMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_ControleMouseEntered
+        BT_Controle.setBackground(new Color(235, 235, 235));
+        BT_Controle.setForeground(new Color(30, 144, 255));
+    }//GEN-LAST:event_BT_ControleMouseEntered
+
+    private void BT_ControleMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_ControleMouseExited
+        BT_Controle.setBackground(new Color(30, 144, 255));
+        BT_Controle.setForeground(Color.BLACK);
+    }//GEN-LAST:event_BT_ControleMouseExited
+
+    private void BT_ControleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_ControleActionPerformed
+        ViewControle vc = new ViewControle(this, rootPaneCheckingEnabled);
+        vc.setVisible(true);
+    }//GEN-LAST:event_BT_ControleActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BT_Agenda;
     private javax.swing.JButton BT_Compra;
+    private javax.swing.JButton BT_Controle;
     private javax.swing.JButton BT_Usuarios;
     private javax.swing.JMenuBar Barra_Menu;
     private javax.swing.JMenu Configuracao;

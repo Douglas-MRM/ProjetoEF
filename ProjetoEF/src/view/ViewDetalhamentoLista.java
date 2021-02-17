@@ -6,30 +6,28 @@ import java.awt.Color;
  *
  * @author Jerônimo
  */
-public class ViewUsuario extends javax.swing.JFrame {
+public class ViewDetalhamentoLista extends javax.swing.JFrame {
 
-    public ViewUsuario() {
+    public ViewDetalhamentoLista() {
         initComponents();
-        setExtendedState(MAXIMIZED_BOTH);
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        PainelBack = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         PainelTop = new javax.swing.JPanel();
         LB_Titulo = new javax.swing.JLabel();
         BT_Sair = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setUndecorated(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        PainelBack.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
         PainelTop.setBackground(new java.awt.Color(255, 255, 255));
 
-        LB_Titulo.setText("Usuário");
+        LB_Titulo.setText("Detalhamento da Lista");
 
         BT_Sair.setBackground(new java.awt.Color(255, 255, 255));
         BT_Sair.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -58,7 +56,7 @@ public class ViewUsuario extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelTopLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(LB_Titulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 627, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 556, Short.MAX_VALUE)
                 .addComponent(BT_Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         PainelTopLayout.setVerticalGroup(
@@ -67,15 +65,15 @@ public class ViewUsuario extends javax.swing.JFrame {
             .addComponent(BT_Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        javax.swing.GroupLayout PainelBackLayout = new javax.swing.GroupLayout(PainelBack);
-        PainelBack.setLayout(PainelBackLayout);
-        PainelBackLayout.setHorizontalGroup(
-            PainelBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(PainelTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        PainelBackLayout.setVerticalGroup(
-            PainelBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PainelBackLayout.createSequentialGroup()
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(PainelTop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 515, Short.MAX_VALUE))
         );
@@ -84,15 +82,14 @@ public class ViewUsuario extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PainelBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PainelBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BT_SairMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_SairMouseEntered
@@ -122,18 +119,18 @@ public class ViewUsuario extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewDetalhamentoLista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewDetalhamentoLista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewDetalhamentoLista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewDetalhamentoLista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewUsuario().setVisible(true);
+                new ViewDetalhamentoLista().setVisible(true);
             }
         });
     }
@@ -141,7 +138,7 @@ public class ViewUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BT_Sair;
     private javax.swing.JLabel LB_Titulo;
-    private javax.swing.JPanel PainelBack;
     private javax.swing.JPanel PainelTop;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

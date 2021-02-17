@@ -6,11 +6,10 @@ import java.awt.Color;
  *
  * @author Jerônimo
  */
-public class ViewUsuario extends javax.swing.JFrame {
+public class ViewEditarLista extends javax.swing.JFrame {
 
-    public ViewUsuario() {
+    public ViewEditarLista() {
         initComponents();
-        setExtendedState(MAXIMIZED_BOTH);
     }
 
     @SuppressWarnings("unchecked")
@@ -21,15 +20,18 @@ public class ViewUsuario extends javax.swing.JFrame {
         PainelTop = new javax.swing.JPanel();
         LB_Titulo = new javax.swing.JLabel();
         BT_Sair = new javax.swing.JButton();
+        a = new javax.swing.JTextField();
+        b = new javax.swing.JTextField();
+        d = new javax.swing.JTextField();
+        c = new javax.swing.JTextField();
+        e = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
 
-        PainelBack.setBackground(new java.awt.Color(204, 204, 204));
-
         PainelTop.setBackground(new java.awt.Color(255, 255, 255));
 
-        LB_Titulo.setText("Usuário");
+        LB_Titulo.setText("Editar Lista");
 
         BT_Sair.setBackground(new java.awt.Color(255, 255, 255));
         BT_Sair.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -58,7 +60,7 @@ public class ViewUsuario extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelTopLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(LB_Titulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 627, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 620, Short.MAX_VALUE)
                 .addComponent(BT_Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         PainelTopLayout.setVerticalGroup(
@@ -72,12 +74,33 @@ public class ViewUsuario extends javax.swing.JFrame {
         PainelBackLayout.setHorizontalGroup(
             PainelBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(PainelTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(PainelBackLayout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addGroup(PainelBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(c)
+                    .addComponent(a, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))
+                .addGap(68, 68, 68)
+                .addGroup(PainelBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(d, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                    .addComponent(b))
+                .addGap(54, 54, 54)
+                .addComponent(e, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                .addGap(198, 198, 198))
         );
         PainelBackLayout.setVerticalGroup(
             PainelBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelBackLayout.createSequentialGroup()
                 .addComponent(PainelTop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 515, Short.MAX_VALUE))
+                .addGap(93, 93, 93)
+                .addGroup(PainelBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(a, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(b, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(e, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(82, 82, 82)
+                .addGroup(PainelBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(c, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(d, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 300, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -88,7 +111,7 @@ public class ViewUsuario extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PainelBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(PainelBack, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -122,18 +145,18 @@ public class ViewUsuario extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewEditarLista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewEditarLista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewEditarLista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewEditarLista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewUsuario().setVisible(true);
+                new ViewEditarLista().setVisible(true);
             }
         });
     }
@@ -143,5 +166,10 @@ public class ViewUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel LB_Titulo;
     private javax.swing.JPanel PainelBack;
     private javax.swing.JPanel PainelTop;
+    private javax.swing.JTextField a;
+    private javax.swing.JTextField b;
+    private javax.swing.JTextField c;
+    private javax.swing.JTextField d;
+    private javax.swing.JTextField e;
     // End of variables declaration//GEN-END:variables
 }

@@ -130,15 +130,16 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace pref="216" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="BT_Compra" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="BT_Agenda" min="-2" pref="180" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="BT_Usuarios" min="-2" pref="180" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="BT_Agenda" pref="180" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="BT_Usuarios" pref="180" max="32767" attributes="0"/>
+                          <Component id="BT_Controle" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="216" max="32767" attributes="0"/>
                   </Group>
@@ -153,7 +154,10 @@
                           <Component id="BT_Usuarios" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="BT_Compra" min="-2" pref="150" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="BT_Compra" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="BT_Controle" min="-2" pref="150" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace pref="62" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -242,6 +246,34 @@
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BT_AgendaMouseEntered"/>
                 <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BT_AgendaMouseExited"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BT_AgendaActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="BT_Controle">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="90" red="1e" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial Black" size="14" style="0"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/img/controle.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="CONTROLE"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="null"/>
+                </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor em Forma de M&#xe3;o"/>
+                </Property>
+                <Property name="horizontalTextPosition" type="int" value="0"/>
+                <Property name="verticalTextPosition" type="int" value="3"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BT_ControleMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BT_ControleMouseExited"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BT_ControleActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

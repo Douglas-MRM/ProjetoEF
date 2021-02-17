@@ -5,13 +5,12 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 import mapeamento.Usuario;
 import conexao.ConexaoMySql;
+import funcoes.Mensagem;
 
 public class UsuarioDao {
 
-    public void Mensagem(String mensagem, String titulo, int icone) {
-        JOptionPane.showMessageDialog(null, mensagem, titulo, icone);
-    }
-
+    Mensagem msg = new Mensagem();
+    
     public void insert(Usuario user) {
         Connection con = ConexaoMySql.getConexao();
         String sql = "INSERT INTO usuario (nome_user, senha_user, email_user, cpf_user, tipo_user) VALUES (?, md5(?), ?, ?, ?)";
@@ -106,6 +105,40 @@ public class UsuarioDao {
                 user.setEmail(re.getString("email_user"));
                 user.setCpf(re.getString("cpf_user"));
                 user.setTipe(re.getString("tipo_user"));
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos!", "", 1);
+
+            }
+        } catch (Exception ex) {
+            //JOptionPane.showMessageDialog(null, "Erro ao buscar o usuario ");
+        }
+        return user;
+    }
+
+    public Usuario confirmUser(String userr, String nome, String password) {
+        Connection con = ConexaoMySql.getConexao();
+        Usuario user = new Usuario();
+        String sql = "SELECT * FROM usuario WHERE nome_user = ? and senha_user = md5(?)";
+        try {
+            PreparedStatement smt = con.prepareStatement(sql);
+            smt.setString(1, nome);
+            smt.setString(2, password);
+            ResultSet re = smt.executeQuery();
+            re.next();
+            if (re.getInt("id_user") > 0) {
+                user.setId_user(user.getId_user());
+                user.setName(user.getName());
+                user.setPassword(user.getPassword());
+                user.setEmail(user.getEmail());
+                user.setCpf(user.getCpf());
+                user.setTipe(user.getTipe());
+//                user.setId_user(re.getInt("id_user"));
+//                user.setName(re.getString("nome_user"));
+//                user.setPassword(re.getString("senha_user"));
+//                user.setEmail(re.getString("email_user"));
+//                user.setCpf(re.getString("cpf_user"));
+//                user.setTipe(re.getString("tipo_user"));
+                
             } else {
                 JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos!", "", 1);
 
