@@ -114,7 +114,7 @@ public class ViewSubLogin extends javax.swing.JDialog {
 
         //msg.Mensagem("Erro: " + user.getId_user(), "Erro", 1);
         if (user.getId_user() != 0) {
-            ViewConfigUsuario configUser = new ViewConfigUsuario(UsuarioLogado);
+            ViewConfigUsuarios configUser = new ViewConfigUsuarios(UsuarioLogado);
             this.dispose();
             configUser.setVisible(true);
 

@@ -105,7 +105,7 @@
               <Font name="DeVinne Txt BT" size="24" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Sing in to Sisbike"/>
+            <Property name="text" type="java.lang.String" value="Sing in to SistemaEF"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="LB_Nome">
@@ -147,12 +147,15 @@
                   <Border info="null"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="edNomeKeyReleased"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/img/user_usuario.png"/>
+                  <Image iconType="3" name="/img/user.png"/>
                 </Property>
               </Properties>
             </Component>

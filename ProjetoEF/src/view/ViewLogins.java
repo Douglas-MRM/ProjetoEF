@@ -5,13 +5,13 @@ import funcoes.Mensagem;
 import java.awt.Color;
 import mapeamento.Usuario;
 
-public class ViewLogin extends javax.swing.JFrame {
-
-    public ViewLogin() {
+public class ViewLogins extends javax.swing.JFrame {
+    
+    public ViewLogins() {
         initComponents();
-
+        
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -39,7 +39,7 @@ public class ViewLogin extends javax.swing.JFrame {
 
         LB_Titulo.setFont(new java.awt.Font("DeVinne Txt BT", 1, 24)); // NOI18N
         LB_Titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LB_Titulo.setText("Sing in to Sisbike");
+        LB_Titulo.setText("Sing in to SistemaEF");
 
         LB_Nome.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
         LB_Nome.setText("NOME");
@@ -47,9 +47,14 @@ public class ViewLogin extends javax.swing.JFrame {
         PainelNome.setBackground(new java.awt.Color(255, 255, 255));
 
         edNome.setBorder(null);
+        edNome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                edNomeKeyReleased(evt);
+            }
+        });
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/user_usuario.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/user.png"))); // NOI18N
 
         javax.swing.GroupLayout PainelNomeLayout = new javax.swing.GroupLayout(PainelNome);
         PainelNome.setLayout(PainelNomeLayout);
@@ -213,31 +218,31 @@ public class ViewLogin extends javax.swing.JFrame {
     private void acaoLogin() {
         UsuarioDao userdao = new UsuarioDao();
         Usuario user = userdao.login(edNome.getText(), edSenha.getText());
-
+        
         if (user.getId_user() > 0) {
 
             //Redirecionamento conforme o TIPO DO USUÁRIO
             String type = user.getTipe();
-
+            
             if (type.equals("Administrador")) {
                 ViewMenuAdmin menu = new ViewMenuAdmin(user);
                 menu.setVisible(true);
                 this.dispose();
                 menu.setLocationRelativeTo(menu);
-
+                
             } else {
                 if (type.equals("Funcionário")) {
                     ViewMenu menuFuncionario = new ViewMenu(user);
                     menuFuncionario.setVisible(true);
                     this.dispose();
                     menuFuncionario.setLocationRelativeTo(menuFuncionario);
-
+                    
                 }
             }
-
+            
         } else {
             Mensagem msg = new Mensagem();
-            msg.Mensagem("CPF ou senha incorreto!", "SisBike diz:", 1);
+            msg.Mensagem("Nome de usuário ou senha incorreto!", "SistemaEF diz:", 1);
         }
     }
 
@@ -281,8 +286,13 @@ public class ViewLogin extends javax.swing.JFrame {
         acaoLogin();
     }//GEN-LAST:event_edSenhaActionPerformed
 
+    private void edNomeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edNomeKeyReleased
+        String nome = edNome.getText();
+        edNome.setText(nome.toUpperCase());     
+    }//GEN-LAST:event_edNomeKeyReleased
+    
     public static void main(String args[]) {
-
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -291,20 +301,34 @@ public class ViewLogin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewLogins.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewLogins.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewLogins.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewLogins.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewLogin().setVisible(true);
+                new ViewLogins().setVisible(true);
             }
         });
     }
@@ -326,7 +350,5 @@ public class ViewLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 
-    private void Mensagem(String cpf_ou_senha_incorreto, String sisBike_diz, int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+Mensagem msg = new Mensagem();
 }
