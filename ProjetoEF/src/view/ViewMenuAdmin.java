@@ -256,7 +256,7 @@ public class ViewMenuAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_MI_ConfigurarUsuarioActionPerformed
 
     private void MI_TrocarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MI_TrocarUsuarioActionPerformed
-        ViewLogins login = new ViewLogins();
+        ViewLogin login = new ViewLogin();
         login.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_MI_TrocarUsuarioActionPerformed
