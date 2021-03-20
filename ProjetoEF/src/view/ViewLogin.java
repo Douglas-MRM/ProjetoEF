@@ -6,12 +6,12 @@ import java.awt.Color;
 import mapeamento.Usuario;
 
 public class ViewLogin extends javax.swing.JFrame {
-    
+
     public ViewLogin() {
         initComponents();
-        
+
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -35,13 +35,15 @@ public class ViewLogin extends javax.swing.JFrame {
         setBackground(new java.awt.Color(153, 153, 153));
         setUndecorated(true);
 
-        PaineBack.setBackground(new java.awt.Color(204, 204, 204));
+        PaineBack.setBackground(new java.awt.Color(8, 35, 54));
 
         LB_Titulo.setFont(new java.awt.Font("DeVinne Txt BT", 1, 24)); // NOI18N
+        LB_Titulo.setForeground(new java.awt.Color(255, 255, 255));
         LB_Titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LB_Titulo.setText("Sing in to SistemaEF");
 
         LB_Nome.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        LB_Nome.setForeground(new java.awt.Color(255, 255, 255));
         LB_Nome.setText("NOME");
 
         PainelNome.setBackground(new java.awt.Color(255, 255, 255));
@@ -72,6 +74,7 @@ public class ViewLogin extends javax.swing.JFrame {
         );
 
         LB_Senha.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        LB_Senha.setForeground(new java.awt.Color(255, 255, 255));
         LB_Senha.setText("SENHA");
 
         PainelSenha.setBackground(new java.awt.Color(255, 255, 255));
@@ -101,9 +104,11 @@ public class ViewLogin extends javax.swing.JFrame {
             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
         );
 
-        BT_Logar.setBackground(new java.awt.Color(138, 43, 226));
+        BT_Logar.setBackground(new java.awt.Color(113, 203, 29));
         BT_Logar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        BT_Logar.setForeground(new java.awt.Color(255, 255, 255));
         BT_Logar.setText("LOGAR");
+        BT_Logar.setBorder(null);
         BT_Logar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BT_Logar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -121,7 +126,9 @@ public class ViewLogin extends javax.swing.JFrame {
 
         BT_Sair.setBackground(new java.awt.Color(178, 34, 34));
         BT_Sair.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        BT_Sair.setForeground(new java.awt.Color(255, 255, 255));
         BT_Sair.setText("SAIR");
+        BT_Sair.setBorder(null);
         BT_Sair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BT_Sair.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -137,7 +144,9 @@ public class ViewLogin extends javax.swing.JFrame {
             }
         });
 
+        LB_RecoverPassword.setBackground(new java.awt.Color(255, 255, 255));
         LB_RecoverPassword.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        LB_RecoverPassword.setForeground(new java.awt.Color(255, 255, 255));
         LB_RecoverPassword.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LB_RecoverPassword.setText("Esqueceu sua senha?");
         LB_RecoverPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -161,14 +170,14 @@ public class ViewLogin extends javax.swing.JFrame {
             .addGroup(PaineBackLayout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addGroup(PaineBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PaineBackLayout.createSequentialGroup()
-                        .addComponent(BT_Logar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BT_Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(LB_Senha, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(LB_Nome, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(PainelNome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PainelSenha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(PainelSenha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(PaineBackLayout.createSequentialGroup()
+                        .addComponent(BT_Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BT_Logar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(84, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PaineBackLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -193,8 +202,8 @@ public class ViewLogin extends javax.swing.JFrame {
                 .addComponent(PainelSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(70, 70, 70)
                 .addGroup(PaineBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BT_Logar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BT_Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BT_Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BT_Logar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(55, 55, 55)
                 .addComponent(LB_RecoverPassword)
                 .addContainerGap())
@@ -218,28 +227,28 @@ public class ViewLogin extends javax.swing.JFrame {
     private void acaoLogin() {
         UsuarioDao userdao = new UsuarioDao();
         Usuario user = userdao.login(edNome.getText(), edSenha.getText());
-        
+
         if (user.getId_user() > 0) {
 
             //Redirecionamento conforme o TIPO DO USUÁRIO
             String type = user.getTipe();
-            
+
             if (type.equals("Administrador")) {
                 ViewMenuAdmin menu = new ViewMenuAdmin(user);
                 menu.setVisible(true);
                 this.dispose();
                 menu.setLocationRelativeTo(menu);
-                
+
             } else {
                 if (type.equals("Funcionário")) {
                     ViewMenu menuFuncionario = new ViewMenu(user);
                     menuFuncionario.setVisible(true);
                     this.dispose();
                     menuFuncionario.setLocationRelativeTo(menuFuncionario);
-                    
+
                 }
             }
-            
+
         } else {
             Mensagem msg = new Mensagem();
             msg.Mensagem("Nome de usuário ou senha incorreto!", "SistemaEF diz:", 1);
@@ -256,11 +265,11 @@ public class ViewLogin extends javax.swing.JFrame {
 
     private void BT_LogarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_LogarMouseEntered
         BT_Logar.setBackground(new Color(235, 235, 235));
-        BT_Logar.setForeground(new Color(138, 43, 226));
+        BT_Logar.setForeground(new Color(113, 203, 29));
     }//GEN-LAST:event_BT_LogarMouseEntered
 
     private void BT_LogarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_LogarMouseExited
-        BT_Logar.setBackground(new Color(138, 43, 226));
+        BT_Logar.setBackground(new Color(113, 203, 29));
         BT_Logar.setForeground(Color.WHITE);
     }//GEN-LAST:event_BT_LogarMouseExited
 
@@ -275,11 +284,11 @@ public class ViewLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_BT_SairMouseExited
 
     private void LB_RecoverPasswordMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LB_RecoverPasswordMouseEntered
-        LB_RecoverPassword.setForeground(new Color(153, 0, 0));
+        LB_RecoverPassword.setForeground(new Color(204, 204, 0));
     }//GEN-LAST:event_LB_RecoverPasswordMouseEntered
 
     private void LB_RecoverPasswordMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LB_RecoverPasswordMouseExited
-        LB_RecoverPassword.setForeground(Color.BLACK);
+        LB_RecoverPassword.setForeground(Color.WHITE);
     }//GEN-LAST:event_LB_RecoverPasswordMouseExited
 
     private void edSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edSenhaActionPerformed
@@ -288,11 +297,11 @@ public class ViewLogin extends javax.swing.JFrame {
 
     private void edNomeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edNomeKeyReleased
         String nome = edNome.getText();
-        edNome.setText(nome.toUpperCase());     
+        edNome.setText(nome.toUpperCase());
     }//GEN-LAST:event_edNomeKeyReleased
-    
+
     public static void main(String args[]) {
-        
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -309,38 +318,6 @@ public class ViewLogin extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ViewLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -366,5 +343,5 @@ public class ViewLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 
-Mensagem msg = new Mensagem();
+    Mensagem msg = new Mensagem();
 }

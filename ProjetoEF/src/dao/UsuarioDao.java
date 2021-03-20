@@ -10,7 +10,7 @@ import funcoes.Mensagem;
 public class UsuarioDao {
 
     Mensagem msg = new Mensagem();
-    
+
     public void insert(Usuario user) {
         Connection con = ConexaoMySql.getConexao();
         String sql = "INSERT INTO usuario (nome_user, senha_user, email_user, cpf_user, tipo_user) VALUES (?, md5(?), ?, ?, ?)";
@@ -28,12 +28,13 @@ public class UsuarioDao {
                 stm.executeUpdate();
                 stm.close();
                 con.close();
-
+                
+                msg.Mensagem("Usuário cadastrado com Sucesso!", "", 1);
             }
 
-            JOptionPane.showMessageDialog(null, "Cadastrado com Sucesso!");
+            //JOptionPane.showMessageDialog(null, );
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Não foi possível fazer a inserção!" + e);
+            JOptionPane.showMessageDialog(null, "Falha ao cadastrar usuário!" + e);
         }
     }
 
@@ -138,7 +139,7 @@ public class UsuarioDao {
 //                user.setEmail(re.getString("email_user"));
 //                user.setCpf(re.getString("cpf_user"));
 //                user.setTipe(re.getString("tipo_user"));
-                
+
             } else {
                 JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos!", "", 1);
 

@@ -10,7 +10,7 @@ public class Lista {
     private String nome;
     private String data_inicial;
     private String data_final;
-    private int ativacao;
+    private boolean ativacao;
 
     public int getId_list() {
         return id_list;
@@ -44,12 +44,13 @@ public class Lista {
         this.data_final = data_final;
     }
 
-    public int getAtivacao() {
+    public boolean isAtivacao() {
         return ativacao;
     }
 
-    public void setAtivacao(int ativacao) {
+    public void setAtivacao(boolean ativacao) {
         this.ativacao = ativacao;
     }
+
 
 }

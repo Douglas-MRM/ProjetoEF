@@ -10,9 +10,11 @@ public class ItensLista {
     private String nome;
     private int quantidade;
     private String fornecedor;
-    private double preco;
-    private double valor;
-    private Lista lista;
+    private float valor;
+    private String categoria;
+    private int ativacao;
+    private int avaliacao_sd;
+    private int fk_id_lista;
 
     public int getId_iten_list() {
         return id_iten_list;
@@ -46,28 +48,44 @@ public class ItensLista {
         this.fornecedor = fornecedor;
     }
 
-    public double getPreco() {
-        return preco;
-    }
-
-    public void setPreco(double preco) {
-        this.preco = preco;
-    }
-
-    public double getValor() {
+    public float getValor() {
         return valor;
     }
 
-    public void setValor(double valor) {
+    public void setValor(float valor) {
         this.valor = valor;
     }
 
-    public Lista getLista() {
-        return lista;
+    public int getFk_id_lista() {
+        return fk_id_lista;
     }
 
-    public void setLista(Lista lista) {
-        this.lista = lista;
+    public void setFk_id_lista(int fk_id_lista) {
+        this.fk_id_lista = fk_id_lista;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public int getAvaliacao_sd() {
+        return avaliacao_sd;
+    }
+
+    public void setAvaliacao_sd(int avaliacao_sd) {
+        this.avaliacao_sd = avaliacao_sd;
+    }
+
+    public int getAtivacao() {
+        return ativacao;
+    }
+
+    public void setAtivacao(int ativacao) {
+        this.ativacao = ativacao;
     }
 
 }

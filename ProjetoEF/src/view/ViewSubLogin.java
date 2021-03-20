@@ -2,6 +2,8 @@ package view;
 
 import dao.UsuarioDao;
 import funcoes.Mensagem;
+import java.awt.Color;
+import java.awt.Toolkit;
 import mapeamento.Usuario;
 
 /**
@@ -18,7 +20,7 @@ public class ViewSubLogin extends javax.swing.JDialog {
         UsuarioLogado = user;
 
         PainelRobo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, null, javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14), new java.awt.Color(0, 0, 0)));
-
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icone.png")));
     }
 
     @SuppressWarnings("unchecked")
@@ -39,7 +41,7 @@ public class ViewSubLogin extends javax.swing.JDialog {
         setTitle("Confirmar Senha");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        PainelBack.setBackground(new java.awt.Color(204, 204, 204));
+        PainelBack.setBackground(new java.awt.Color(57, 69, 81));
         PainelBack.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -57,10 +59,21 @@ public class ViewSubLogin extends javax.swing.JDialog {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/balao.png"))); // NOI18N
         PainelBack.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, -1, -1));
 
-        PainelRobo.setBackground(new java.awt.Color(204, 204, 204));
+        PainelRobo.setBackground(new java.awt.Color(57, 69, 81));
 
+        BT_Proseguir.setBackground(new java.awt.Color(30, 144, 255));
+        BT_Proseguir.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        BT_Proseguir.setForeground(new java.awt.Color(255, 255, 255));
         BT_Proseguir.setText("PROSSEGUIR");
         BT_Proseguir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BT_Proseguir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                BT_ProseguirMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BT_ProseguirMouseExited(evt);
+            }
+        });
         BT_Proseguir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BT_ProseguirActionPerformed(evt);
@@ -84,7 +97,7 @@ public class ViewSubLogin extends javax.swing.JDialog {
                 .addContainerGap(156, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelRoboLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BT_Proseguir, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BT_Proseguir)
                 .addContainerGap())
         );
         PainelRoboLayout.setVerticalGroup(
@@ -113,17 +126,27 @@ public class ViewSubLogin extends javax.swing.JDialog {
         Usuario user = userdao.login(UsuarioLogado.getName(), UsuarioLogado.getPassword());
 
         //msg.Mensagem("Erro: " + user.getId_user(), "Erro", 1);
-        if (user.getId_user() != 0) {
-            ViewConfigUsuario configUser = new ViewConfigUsuario(UsuarioLogado);
+        //if (user.getId_user() != 0) {
+            ViewConfigurarUsuario configUser = new ViewConfigurarUsuario(UsuarioLogado);
             this.dispose();
             configUser.setVisible(true);
 
-        } else {
-            msg.Mensagem("Erro", "Erro", 1);
-        }
+        //} else {
+            //msg.Mensagem("Erro", "Erro", 1);
+        //}
 
 
     }//GEN-LAST:event_BT_ProseguirActionPerformed
+
+    private void BT_ProseguirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_ProseguirMouseEntered
+        BT_Proseguir.setBackground(new Color(235, 235, 235));
+        BT_Proseguir.setForeground(Color.BLACK);
+    }//GEN-LAST:event_BT_ProseguirMouseEntered
+
+    private void BT_ProseguirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_ProseguirMouseExited
+        BT_Proseguir.setBackground(new Color(30, 144, 255));
+        BT_Proseguir.setForeground(Color.WHITE);
+    }//GEN-LAST:event_BT_ProseguirMouseExited
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BT_Proseguir;

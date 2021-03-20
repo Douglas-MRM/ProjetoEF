@@ -31,14 +31,14 @@ public class ItensListaControleDao {
                 ilc.setRazao_social(re.getString("itens_listControl.razao_social_itens_listControl"));
                 ilc.setCnpj(re.getString("itens_listControl.cnpj_itens_listControl"));
                 ilc.setVencimento_boleto(re.getString("itens_listControl.vencimento_boleto_itens_listControl"));
-                ilc.setValor(re.getDouble("itens_listControl.valor_itens_listControl"));
+                ilc.setValor(re.getFloat("itens_listControl.valor_itens_listControl"));
                 ilc.setFk_id_situacao(re.getString("itens_listControl.situacao_itens_listControl"));
                 ilc.setFk_id_listControl(re.getInt("itens_listControl.fk_id_listControl"));
                 itensList.add(ilc);
                 
             }
         } catch (Exception e) {
-            msg.Mensagem("Falha ao buscar os registros!", "SisBike diz: " + e, 2);
+            msg.Mensagem("Falha ao buscar os registros!", "SistemaEF diz: " + e, 2);
         }
         return itensList;
     }

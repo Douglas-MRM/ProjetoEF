@@ -36,12 +36,13 @@ public class ListaControleDao {
 
     public void deactivate(ListaControle listControl) {
         Connection con = ConexaoMySql.getConexao();
-        String sql = "UPDATE listControl SET ativacao_listControl = 0 WHERE id_listControl = ?";
-        int opcao = JOptionPane.showConfirmDialog(null, "Realmente deseja desativar esta Lista?", "SisBike diz:", JOptionPane.YES_NO_OPTION);
+        String sql = "UPDATE listControl SET fk_ativacao = ? WHERE id_listControl = ?";
+        int opcao = JOptionPane.showConfirmDialog(null, "Realmente deseja desativar esta Lista?", "SistemaEF diz:", JOptionPane.YES_NO_OPTION);
 
         if (opcao == JOptionPane.YES_OPTION) {
             try (PreparedStatement stm = con.prepareStatement(sql)) {
-                stm.setInt(1, listControl.getId_listControl());
+                stm.setBoolean(1, false);
+                stm.setInt(2, listControl.getId_listControl());
 
                 stm.executeUpdate();
                 stm.close();
@@ -57,11 +58,11 @@ public class ListaControleDao {
 
     public List<ListaControle> listAll() {
         Connection con = ConexaoMySql.getConexao();
-        String sql = "SELECT * FROM listControl WHERE ativacao_listControl = ? ORDER BY id_listControl";
+        String sql = "SELECT * FROM listControl WHERE fk_ativacao = ? ORDER BY id_listControl";
         List<ListaControle> listList = new ArrayList();
 
         try (PreparedStatement stm = con.prepareStatement(sql)) {
-            stm.setInt(1, 1);
+            stm.setBoolean(1, true);
             ResultSet re = stm.executeQuery();
             while (re.next()) {
                 ListaControle list = new ListaControle();
@@ -69,7 +70,32 @@ public class ListaControleDao {
                 list.setNome(re.getString("listControl.nome_listControl"));
                 list.setData_inicial(re.getString("listControl.data_inicial_listControl"));
                 list.setData_final(re.getString("listControl.data_final_listControl"));
-                list.setAtivacao(re.getInt("listControl.ativacao_listControl"));
+                list.setAtivacao(re.getInt("listControl.fk_ativacao"));
+
+                listList.add(list);
+            }
+        } catch (Exception e) {
+            msg.Mensagem("Falha ao buscar os registros!", "SistemaEF diz:" + e, 0);
+        }
+        return listList;
+    }
+
+    public List<ListaControle> listAll(String texto) {
+        Connection con = ConexaoMySql.getConexao();
+        String sql = "SELECT * FROM listControl WHERE fk_ativacao = ? AND nome_listControl LIKE ? ORDER BY id_listControl";
+        List<ListaControle> listList = new ArrayList();
+
+        try (PreparedStatement stm = con.prepareStatement(sql)) {
+            stm.setBoolean(1, true);
+            stm.setString(2, "%" + texto + "%");
+            ResultSet re = stm.executeQuery();
+            while (re.next()) {
+                ListaControle list = new ListaControle();
+                list.setId_listControl(re.getInt("listControl.id_listControl"));
+                list.setNome(re.getString("listControl.nome_listControl"));
+                list.setData_inicial(re.getString("listControl.data_inicial_listControl"));
+                list.setData_final(re.getString("listControl.data_final_listControl"));
+                list.setAtivacao(re.getInt("listControl.fk_ativacao"));
 
                 listList.add(list);
             }

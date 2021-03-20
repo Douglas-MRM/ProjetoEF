@@ -37,7 +37,7 @@ public class ViewMenu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        PainelBack.setBackground(new java.awt.Color(204, 204, 204));
+        PainelBack.setBackground(new java.awt.Color(57, 69, 81));
 
         javax.swing.GroupLayout PainelBackLayout = new javax.swing.GroupLayout(PainelBack);
         PainelBack.setLayout(PainelBackLayout);

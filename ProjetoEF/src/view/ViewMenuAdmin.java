@@ -1,7 +1,6 @@
 package view;
 
 import java.awt.Color;
-import javax.swing.Box;
 import mapeamento.Usuario;
 
 public class ViewMenuAdmin extends javax.swing.JFrame {
@@ -42,6 +41,8 @@ public class ViewMenuAdmin extends javax.swing.JFrame {
         BT_Usuarios = new javax.swing.JButton();
         BT_Agenda = new javax.swing.JButton();
         BT_Controle = new javax.swing.JButton();
+        BT_Estoque = new javax.swing.JButton();
+        BT_Itens = new javax.swing.JButton();
         LB_LogoEF = new javax.swing.JLabel();
         Barra_Menu = new javax.swing.JMenuBar();
         Configuracao = new javax.swing.JMenu();
@@ -52,9 +53,9 @@ public class ViewMenuAdmin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        PainelBack.setBackground(new java.awt.Color(204, 204, 204));
+        PainelBack.setBackground(new java.awt.Color(57, 69, 81));
 
-        PainelButtons.setBackground(new java.awt.Color(204, 204, 204));
+        PainelButtons.setBackground(new java.awt.Color(57, 69, 81));
 
         BT_Compra.setBackground(new java.awt.Color(30, 144, 255));
         BT_Compra.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
@@ -82,7 +83,7 @@ public class ViewMenuAdmin extends javax.swing.JFrame {
         BT_Usuarios.setBackground(new java.awt.Color(30, 144, 255));
         BT_Usuarios.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         BT_Usuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usuario.png"))); // NOI18N
-        BT_Usuarios.setText("USUÁRIO");
+        BT_Usuarios.setText("USUÁRIOS");
         BT_Usuarios.setBorder(null);
         BT_Usuarios.setBorderPainted(false);
         BT_Usuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -104,8 +105,8 @@ public class ViewMenuAdmin extends javax.swing.JFrame {
 
         BT_Agenda.setBackground(new java.awt.Color(30, 144, 255));
         BT_Agenda.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        BT_Agenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/agenda.png"))); // NOI18N
-        BT_Agenda.setText("AGENDA");
+        BT_Agenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/superior_direto.png"))); // NOI18N
+        BT_Agenda.setText(" SUPERIOR DIRETO");
         BT_Agenda.setBorder(null);
         BT_Agenda.setBorderPainted(false);
         BT_Agenda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -148,33 +149,87 @@ public class ViewMenuAdmin extends javax.swing.JFrame {
             }
         });
 
+        BT_Estoque.setBackground(new java.awt.Color(30, 144, 255));
+        BT_Estoque.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        BT_Estoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cotacao.png"))); // NOI18N
+        BT_Estoque.setText("COTAÇÃO");
+        BT_Estoque.setBorder(null);
+        BT_Estoque.setBorderPainted(false);
+        BT_Estoque.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BT_Estoque.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BT_Estoque.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        BT_Estoque.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                BT_EstoqueMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BT_EstoqueMouseExited(evt);
+            }
+        });
+        BT_Estoque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BT_EstoqueActionPerformed(evt);
+            }
+        });
+
+        BT_Itens.setBackground(new java.awt.Color(30, 144, 255));
+        BT_Itens.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        BT_Itens.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/estoque.png"))); // NOI18N
+        BT_Itens.setText("ESTOQUE");
+        BT_Itens.setBorder(null);
+        BT_Itens.setBorderPainted(false);
+        BT_Itens.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BT_Itens.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BT_Itens.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        BT_Itens.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                BT_ItensMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BT_ItensMouseExited(evt);
+            }
+        });
+        BT_Itens.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BT_ItensActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PainelButtonsLayout = new javax.swing.GroupLayout(PainelButtons);
         PainelButtons.setLayout(PainelButtonsLayout);
         PainelButtonsLayout.setHorizontalGroup(
             PainelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelButtonsLayout.createSequentialGroup()
-                .addContainerGap(216, Short.MAX_VALUE)
-                .addGroup(PainelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(BT_Compra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BT_Agenda, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE))
+                .addContainerGap(117, Short.MAX_VALUE)
+                .addGroup(PainelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BT_Agenda, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BT_Compra, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(PainelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(BT_Usuarios, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                    .addComponent(BT_Controle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(216, Short.MAX_VALUE))
+                .addGroup(PainelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PainelButtonsLayout.createSequentialGroup()
+                        .addComponent(BT_Controle, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(BT_Estoque, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PainelButtonsLayout.createSequentialGroup()
+                        .addComponent(BT_Usuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(BT_Itens, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
         PainelButtonsLayout.setVerticalGroup(
             PainelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelButtonsLayout.createSequentialGroup()
                 .addGap(62, 62, 62)
-                .addGroup(PainelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(BT_Agenda, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                    .addComponent(BT_Usuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(PainelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(BT_Agenda, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BT_Usuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BT_Itens, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(PainelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BT_Compra, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BT_Controle, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(62, Short.MAX_VALUE))
+                    .addComponent(BT_Controle, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BT_Estoque, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         LB_LogoEF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -268,18 +323,18 @@ public class ViewMenuAdmin extends javax.swing.JFrame {
     // BOTÕES \\
 
     private void BT_AgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_AgendaActionPerformed
-        ViewAgenda agenda = new ViewAgenda();
-        agenda.setVisible(true);
+        ViewSuperiorDireto vsd = new ViewSuperiorDireto(this, rootPaneCheckingEnabled);
+        vsd.setVisible(true);
     }//GEN-LAST:event_BT_AgendaActionPerformed
 
     private void BT_UsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_UsuariosActionPerformed
-        ViewUsuario usuario = new ViewUsuario();
-        usuario.setVisible(true);
+        ViewUsuario vu = new ViewUsuario(this, rootPaneCheckingEnabled);
+        vu.setVisible(true);
     }//GEN-LAST:event_BT_UsuariosActionPerformed
 
     private void BT_CompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_CompraActionPerformed
-        ViewListaCompra compra = new ViewListaCompra();
-        compra.setVisible(true);
+        ViewListaCompra vlc = new ViewListaCompra(this, rootPaneCheckingEnabled);
+        vlc.setVisible(true);
     }//GEN-LAST:event_BT_CompraActionPerformed
 
     // EVENTOS \\
@@ -325,14 +380,46 @@ public class ViewMenuAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_BT_ControleMouseExited
 
     private void BT_ControleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_ControleActionPerformed
-        ViewControle vc = new ViewControle(this, rootPaneCheckingEnabled);
+        ViewListaControle vc = new ViewListaControle(this, rootPaneCheckingEnabled);
         vc.setVisible(true);
     }//GEN-LAST:event_BT_ControleActionPerformed
+
+    private void BT_EstoqueMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_EstoqueMouseEntered
+        BT_Estoque.setBackground(new Color(235, 235, 235));
+        BT_Estoque.setForeground(new Color(30, 144, 255));
+    }//GEN-LAST:event_BT_EstoqueMouseEntered
+
+    private void BT_EstoqueMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_EstoqueMouseExited
+        BT_Estoque.setBackground(new Color(30, 144, 255));
+        BT_Estoque.setForeground(Color.BLACK);
+    }//GEN-LAST:event_BT_EstoqueMouseExited
+
+    private void BT_EstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_EstoqueActionPerformed
+        ViewCotacao vc = new ViewCotacao(this, rootPaneCheckingEnabled);
+        vc.setVisible(true);
+    }//GEN-LAST:event_BT_EstoqueActionPerformed
+
+    private void BT_ItensMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_ItensMouseEntered
+        BT_Itens.setBackground(new Color(235, 235, 235));
+        BT_Itens.setForeground(new Color(30, 144, 255));
+    }//GEN-LAST:event_BT_ItensMouseEntered
+
+    private void BT_ItensMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_ItensMouseExited
+        BT_Itens.setBackground(new Color(30, 144, 255));
+        BT_Itens.setForeground(Color.BLACK);
+    }//GEN-LAST:event_BT_ItensMouseExited
+
+    private void BT_ItensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_ItensActionPerformed
+        ViewEstoque vi = new ViewEstoque(this, rootPaneCheckingEnabled);
+        vi.setVisible(true);
+    }//GEN-LAST:event_BT_ItensActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BT_Agenda;
     private javax.swing.JButton BT_Compra;
     private javax.swing.JButton BT_Controle;
+    private javax.swing.JButton BT_Estoque;
+    private javax.swing.JButton BT_Itens;
     private javax.swing.JButton BT_Usuarios;
     private javax.swing.JMenuBar Barra_Menu;
     private javax.swing.JMenu Configuracao;

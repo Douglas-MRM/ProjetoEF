@@ -7,9 +7,9 @@ import mapeamento.Usuario;
  *
  * @author Jerônimo
  */
-public class ViewConfigUsuario extends javax.swing.JFrame {
+public class ViewConfigurarUsuario extends javax.swing.JFrame {
 
-    public ViewConfigUsuario(Usuario user) {
+    public ViewConfigurarUsuario(Usuario user) {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
         edNome.setText(user.getName());
@@ -28,6 +28,7 @@ public class ViewConfigUsuario extends javax.swing.JFrame {
         PainelTop = new javax.swing.JPanel();
         LB_Titulo = new javax.swing.JLabel();
         BT_Sair = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         LB_Nome = new javax.swing.JLabel();
         LB_Email = new javax.swing.JLabel();
         LB_NovaSenha = new javax.swing.JLabel();
@@ -43,7 +44,7 @@ public class ViewConfigUsuario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
 
-        PainelBack.setBackground(new java.awt.Color(204, 204, 204));
+        PainelBack.setBackground(new java.awt.Color(57, 69, 81));
 
         PainelTop.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -69,12 +70,16 @@ public class ViewConfigUsuario extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/icon.png"))); // NOI18N
+
         javax.swing.GroupLayout PainelTopLayout = new javax.swing.GroupLayout(PainelTop);
         PainelTop.setLayout(PainelTopLayout);
         PainelTopLayout.setHorizontalGroup(
             PainelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelTopLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(LB_Titulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BT_Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -82,22 +87,35 @@ public class ViewConfigUsuario extends javax.swing.JFrame {
         PainelTopLayout.setVerticalGroup(
             PainelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(LB_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(BT_Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        LB_Nome.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        LB_Nome.setForeground(new java.awt.Color(255, 255, 255));
         LB_Nome.setText("Nome");
 
+        LB_Email.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        LB_Email.setForeground(new java.awt.Color(255, 255, 255));
         LB_Email.setText("Email");
 
+        LB_NovaSenha.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        LB_NovaSenha.setForeground(new java.awt.Color(255, 255, 255));
         LB_NovaSenha.setText("Nova Senha");
 
+        LB_ConfirmarSenha.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        LB_ConfirmarSenha.setForeground(new java.awt.Color(255, 255, 255));
         LB_ConfirmarSenha.setText("Confirmar Senha");
 
-        BT_Atualizar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        BT_Atualizar.setBackground(new java.awt.Color(30, 144, 255));
+        BT_Atualizar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        BT_Atualizar.setForeground(new java.awt.Color(255, 255, 255));
         BT_Atualizar.setText("ATUALIZAR");
         BT_Atualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        BT_Cancelar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        BT_Cancelar.setBackground(new java.awt.Color(255, 0, 0));
+        BT_Cancelar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        BT_Cancelar.setForeground(new java.awt.Color(255, 255, 255));
         BT_Cancelar.setText("CANCELAR");
         BT_Cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -106,7 +124,7 @@ public class ViewConfigUsuario extends javax.swing.JFrame {
         PainelBackLayout.setHorizontalGroup(
             PainelBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(PainelTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelBackLayout.createSequentialGroup()
+            .addGroup(PainelBackLayout.createSequentialGroup()
                 .addContainerGap(101, Short.MAX_VALUE)
                 .addGroup(PainelBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PainelBackLayout.createSequentialGroup()
@@ -134,7 +152,7 @@ public class ViewConfigUsuario extends javax.swing.JFrame {
             PainelBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelBackLayout.createSequentialGroup()
                 .addComponent(PainelTop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
                 .addGroup(PainelBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PainelBackLayout.createSequentialGroup()
                         .addComponent(LB_Nome)
@@ -158,7 +176,7 @@ public class ViewConfigUsuario extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(BT_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(BT_Atualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -203,18 +221,18 @@ public class ViewConfigUsuario extends javax.swing.JFrame {
 //                }
 //            }
 //        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(ViewConfigUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(ViewConfigurarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(ViewConfigUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(ViewConfigurarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(ViewConfigUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(ViewConfigurarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(ViewConfigUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(ViewConfigurarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
 //        //</editor-fold>
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
-//                new ViewConfigUsuario().setVisible(true);
+//                new ViewConfigurarUsuario().setVisible(true);
 //            }
 //        });
 //    }
@@ -235,5 +253,6 @@ public class ViewConfigUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField edNevaSenha;
     private javax.swing.JTextField edNome;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

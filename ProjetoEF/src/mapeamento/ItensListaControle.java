@@ -10,7 +10,7 @@ public class ItensListaControle {
     private String razao_social;
     private String cnpj;
     private String vencimento_boleto;
-    private double valor;
+    private float valor;
     private String fk_id_situacao;
     private int fk_id_listControl;
 
@@ -46,11 +46,11 @@ public class ItensListaControle {
         this.vencimento_boleto = vencimento_boleto;
     }
 
-    public double getValor() {
+    public float getValor() {
         return valor;
     }
 
-    public void setValor(double valor) {
+    public void setValor(float valor) {
         this.valor = valor;
     }
 
