@@ -111,11 +111,13 @@ public class CotacaoDao {
 
     public List<ItensCotacao> listItens(int id) {
         Connection con = ConexaoMySql.getConexao();
-        String sql = "SELECT * FROM itens_cotacao INNER JOIN cotacao ON cotacao.id_cota = ? AND itens_cotacao.fk_ativacao = ?";
+        String sql = "SELECT * FROM itens_cotacao INNER JOIN cotacao ON (cotacao.id_cota = ? AND itens_cotacao.fk_id_cota = ?) AND itens_cotacao.fk_ativacao = ?";
+
         List<ItensCotacao> listItenCota = new ArrayList();
         try (PreparedStatement stm = con.prepareStatement(sql)) {
             stm.setInt(1, id);
-            stm.setBoolean(2, true);
+            stm.setInt(2, id);
+            stm.setBoolean(3, true);
             ResultSet re = stm.executeQuery();
             while (re.next()) {
                 ItensCotacao itenCota = new ItensCotacao();
@@ -128,7 +130,42 @@ public class CotacaoDao {
                 itenCota.setId_cotacao(re.getInt("fk_id_cota"));
                 itenCota.setAvaliacao_sd(re.getInt("fk_avaliacao_sd"));
                 itenCota.setAtivacao(re.getBoolean("fk_ativacao"));
-                itenCota.setStatus(re.getBoolean("fk_status_aval_sd"));
+                itenCota.setStatus(re.getBoolean("fk_avaliacao_sd_cota"));
+
+                listItenCota.add(itenCota);
+            }
+
+        } catch (Exception e) {
+            msg.Mensagem("Falha ao buscar os registros!", "SistemaEF diz:" + e, 0);
+        }
+
+        return listItenCota;
+    }
+    
+    public List<ItensCotacao> listItensSD(int id) {
+        Connection con = ConexaoMySql.getConexao();
+        String sql = "SELECT * FROM itens_cotacao INNER JOIN cotacao ON (cotacao.id_cota = ? AND itens_cotacao.fk_id_cota = ?) AND fk_status_avaliacao_sd = ? AND fk_status_avaliacao_sd = ? AND itens_cotacao.fk_ativacao = ?";
+
+        List<ItensCotacao> listItenCota = new ArrayList();
+        try (PreparedStatement stm = con.prepareStatement(sql)) {
+            stm.setInt(1, id);
+            stm.setInt(2, id);
+            stm.setInt(3, 1);
+            stm.setInt(4, id);
+            stm.setBoolean(5, true);
+            ResultSet re = stm.executeQuery();
+            while (re.next()) {
+                ItensCotacao itenCota = new ItensCotacao();
+                itenCota.setId_itens_cotacao(re.getInt("id_itens_cota"));
+                itenCota.setProduto(re.getString("produto_itens_cota"));
+                itenCota.setFornecedor(re.getString("fornecedor_itens_cota"));
+                itenCota.setCaracteristica(re.getString("caracteristica_itens_cota"));
+                itenCota.setValor_avista(re.getFloat("form_pag_avista_itens_cota"));
+                itenCota.setValor_aprazo(re.getFloat("form_pag_aprazo_itens_cota"));
+                itenCota.setId_cotacao(re.getInt("fk_id_cota"));
+                itenCota.setAvaliacao_sd(re.getInt("fk_avaliacao_sd"));
+                itenCota.setAtivacao(re.getBoolean("fk_ativacao"));
+                itenCota.setStatus(re.getBoolean("fk_avaliacao_sd_cota"));
 
                 listItenCota.add(itenCota);
             }

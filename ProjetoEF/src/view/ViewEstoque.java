@@ -88,8 +88,9 @@ public class ViewEstoque extends javax.swing.JDialog {
         PainelBack = new javax.swing.JPanel();
         PainelTop = new javax.swing.JPanel();
         LB_Titulo = new javax.swing.JLabel();
-        BT_Sair = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        Painel_Sair = new javax.swing.JPanel();
+        LB_Sair = new javax.swing.JLabel();
         PainelGuias = new javax.swing.JTabbedPane();
         Estoque = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -137,28 +138,37 @@ public class ViewEstoque extends javax.swing.JDialog {
 
         LB_Titulo.setText("Estoque");
 
-        BT_Sair.setBackground(new java.awt.Color(255, 255, 255));
-        BT_Sair.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        BT_Sair.setText("X");
-        BT_Sair.setActionCommand("");
-        BT_Sair.setBorder(null);
-        BT_Sair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        BT_Sair.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/icon.png"))); // NOI18N
+
+        Painel_Sair.setBackground(new java.awt.Color(255, 255, 255));
+
+        LB_Sair.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        LB_Sair.setForeground(new java.awt.Color(0, 0, 0));
+        LB_Sair.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LB_Sair.setText("X");
+        LB_Sair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LB_SairMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                BT_SairMouseEntered(evt);
+                LB_SairMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                BT_SairMouseExited(evt);
-            }
-        });
-        BT_Sair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BT_SairActionPerformed(evt);
+                LB_SairMouseExited(evt);
             }
         });
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/icon.png"))); // NOI18N
+        javax.swing.GroupLayout Painel_SairLayout = new javax.swing.GroupLayout(Painel_Sair);
+        Painel_Sair.setLayout(Painel_SairLayout);
+        Painel_SairLayout.setHorizontalGroup(
+            Painel_SairLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(LB_Sair, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+        );
+        Painel_SairLayout.setVerticalGroup(
+            Painel_SairLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(LB_Sair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout PainelTopLayout = new javax.swing.GroupLayout(PainelTop);
         PainelTop.setLayout(PainelTopLayout);
@@ -169,14 +179,17 @@ public class ViewEstoque extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(LB_Titulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BT_Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(Painel_Sair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         PainelTopLayout.setVerticalGroup(
             PainelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(BT_Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jLabel1))
-            .addComponent(LB_Titulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelTopLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(PainelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(Painel_Sair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LB_Titulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         Estoque.setBackground(new java.awt.Color(57, 69, 81));
@@ -654,21 +667,6 @@ public class ViewEstoque extends javax.swing.JDialog {
         preencherTabelaEstoque(edPesquisaEstoque.getText());
     }//GEN-LAST:event_edPesquisaEstoqueKeyReleased
 
-    private void BT_SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_SairActionPerformed
-        this.dispose();
-        //System.exit(0);
-    }//GEN-LAST:event_BT_SairActionPerformed
-
-    private void BT_SairMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_SairMouseExited
-        BT_Sair.setBackground(Color.WHITE);
-        BT_Sair.setForeground(Color.BLACK);
-    }//GEN-LAST:event_BT_SairMouseExited
-
-    private void BT_SairMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_SairMouseEntered
-        BT_Sair.setBackground(Color.RED);
-        BT_Sair.setForeground(Color.WHITE);
-    }//GEN-LAST:event_BT_SairMouseEntered
-
     private void BT_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_NovoActionPerformed
         PainelGuias.setSelectedIndex(2);
     }//GEN-LAST:event_BT_NovoActionPerformed
@@ -821,6 +819,20 @@ public class ViewEstoque extends javax.swing.JDialog {
         vhe.setVisible(true);
     }//GEN-LAST:event_BT_HistoricoActionPerformed
 
+    private void LB_SairMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LB_SairMouseEntered
+        Painel_Sair.setBackground(Color.RED);
+        LB_Sair.setForeground(Color.WHITE);
+    }//GEN-LAST:event_LB_SairMouseEntered
+
+    private void LB_SairMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LB_SairMouseExited
+        Painel_Sair.setBackground(Color.WHITE);
+        LB_Sair.setForeground(Color.BLACK);
+    }//GEN-LAST:event_LB_SairMouseExited
+
+    private void LB_SairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LB_SairMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_LB_SairMouseClicked
+
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -873,7 +885,6 @@ public class ViewEstoque extends javax.swing.JDialog {
     private javax.swing.JButton BT_Excluir;
     private javax.swing.JButton BT_Historico;
     private javax.swing.JButton BT_Novo;
-    private javax.swing.JButton BT_Sair;
     private javax.swing.JComboBox<String> CB_Categoria;
     private javax.swing.JPanel Estoque;
     private javax.swing.JLabel LB_Categoria;
@@ -881,6 +892,7 @@ public class ViewEstoque extends javax.swing.JDialog {
     private javax.swing.JLabel LB_Marca;
     private javax.swing.JLabel LB_Nome;
     private javax.swing.JLabel LB_Observacao;
+    private javax.swing.JLabel LB_Sair;
     private javax.swing.JLabel LB_Titulo;
     private javax.swing.JPanel Novo;
     private javax.swing.JPanel PainelBack;
@@ -888,6 +900,7 @@ public class ViewEstoque extends javax.swing.JDialog {
     private javax.swing.JPanel PainelMarca;
     private javax.swing.JPanel PainelNome;
     private javax.swing.JPanel PainelTop;
+    private javax.swing.JPanel Painel_Sair;
     private javax.swing.JPanel Produtos;
     private javax.swing.JTable TB_Estoque;
     private javax.swing.JTable TB_Produtos;

@@ -2,6 +2,7 @@ package view;
 
 import com.placeholder.PlaceHolder;
 import dao.CotacaoDao;
+import dao.ItensCotacaoDao;
 import funcoes.Mensagem;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -26,7 +27,9 @@ public class ViewCotacao extends javax.swing.JDialog {
         this.setPreferredSize(d);
         initComponents();
         preencharTabelaCOTA();
-
+        preencherCbItens();
+        
+        CB_Itens.setSelectedIndex(-1);
         BT_Atualizar_COT.setVisible(false);
         BT_Atualizar_DET.setVisible(false);
     }
@@ -60,6 +63,14 @@ public class ViewCotacao extends javax.swing.JDialog {
             tabela.addRow(new Object[]{ItenCota.getId_itens_cotacao(), ItenCota.getProduto(), ItenCota.getFornecedor(), ItenCota.getCaracteristica(), ItenCota.getValor_avista(), ItenCota.getValor_aprazo()});
         }
     }
+    
+    public void preencherCbItens() {
+        ItensCotacaoDao ItenCotaDao = new ItensCotacaoDao();
+        List<ItensCotacao> itenList = ItenCotaDao.listItens();
+        for (ItensCotacao i : itenList) {
+            CB_Itens.addItem(i.getProduto());
+        }
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -69,7 +80,8 @@ public class ViewCotacao extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        BT_Sair = new javax.swing.JButton();
+        Painel_Sair = new javax.swing.JPanel();
+        LB_Sair = new javax.swing.JLabel();
         PainelGuias = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -107,9 +119,6 @@ public class ViewCotacao extends javax.swing.JDialog {
         edPesquisaDET = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jPanel10 = new javax.swing.JPanel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         BT_Criar_DET = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
@@ -131,6 +140,7 @@ public class ViewCotacao extends javax.swing.JDialog {
         jTextField8 = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        CB_Itens = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -145,24 +155,34 @@ public class ViewCotacao extends javax.swing.JDialog {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Cotação dos Produtos");
 
-        BT_Sair.setBackground(new java.awt.Color(255, 255, 255));
-        BT_Sair.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        BT_Sair.setForeground(new java.awt.Color(0, 0, 0));
-        BT_Sair.setText("X");
-        BT_Sair.setBorder(null);
-        BT_Sair.addMouseListener(new java.awt.event.MouseAdapter() {
+        Painel_Sair.setBackground(new java.awt.Color(255, 255, 255));
+
+        LB_Sair.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        LB_Sair.setForeground(new java.awt.Color(0, 0, 0));
+        LB_Sair.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LB_Sair.setText("X");
+        LB_Sair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LB_SairMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                BT_SairMouseEntered(evt);
+                LB_SairMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                BT_SairMouseExited(evt);
+                LB_SairMouseExited(evt);
             }
         });
-        BT_Sair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BT_SairActionPerformed(evt);
-            }
-        });
+
+        javax.swing.GroupLayout Painel_SairLayout = new javax.swing.GroupLayout(Painel_Sair);
+        Painel_Sair.setLayout(Painel_SairLayout);
+        Painel_SairLayout.setHorizontalGroup(
+            Painel_SairLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(LB_Sair, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+        );
+        Painel_SairLayout.setVerticalGroup(
+            Painel_SairLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(LB_Sair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -173,13 +193,13 @@ public class ViewCotacao extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BT_Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(Painel_Sair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(BT_Sair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Painel_Sair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel3.setBackground(new java.awt.Color(57, 69, 81));
@@ -330,8 +350,9 @@ public class ViewCotacao extends javax.swing.JDialog {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap(109, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 667, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jPanel16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 667, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(BT_Novo_COT, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -698,27 +719,6 @@ public class ViewCotacao extends javax.swing.JDialog {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Produto");
 
-        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
-
-        jTextField4.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField4.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField4.setBorder(null);
-
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE))
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-        );
-
         jLabel10.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("COD");
@@ -823,8 +823,8 @@ public class ViewCotacao extends javax.swing.JDialog {
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+            .addComponent(jTextField6)
         );
 
         jLabel13.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
@@ -891,32 +891,31 @@ public class ViewCotacao extends javax.swing.JDialog {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(141, Short.MAX_VALUE)
+                .addContainerGap(144, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(BT_Criar_DET, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(100, 100, 100)
                         .addComponent(BT_Atualizar_DET, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
                         .addComponent(BT_Cancelar_DET, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel8)
-                                .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel10)
-                                .addComponent(jLabel15)
-                                .addComponent(jScrollPane3))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel8)
+                            .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel15)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
                             .addComponent(jLabel17)
-                            .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(CB_Itens, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(60, 60, 60)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel11)
-                            .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel13)
-                            .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(141, Short.MAX_VALUE))
+                            .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -930,7 +929,7 @@ public class ViewCotacao extends javax.swing.JDialog {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(CB_Itens, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -992,20 +991,6 @@ public class ViewCotacao extends javax.swing.JDialog {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void BT_SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_SairActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_BT_SairActionPerformed
-
-    private void BT_SairMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_SairMouseEntered
-        BT_Sair.setBackground(Color.RED);
-        BT_Sair.setForeground(Color.WHITE);
-    }//GEN-LAST:event_BT_SairMouseEntered
-
-    private void BT_SairMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_SairMouseExited
-        BT_Sair.setBackground(Color.WHITE);
-        BT_Sair.setForeground(Color.BLACK);
-    }//GEN-LAST:event_BT_SairMouseExited
 
     // PAINEL COTAÇÕES \\
 
@@ -1258,6 +1243,20 @@ public class ViewCotacao extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_BT_Enviar_COTActionPerformed
 
+    private void LB_SairMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LB_SairMouseEntered
+        Painel_Sair.setBackground(Color.RED);
+        LB_Sair.setForeground(Color.WHITE);
+    }//GEN-LAST:event_LB_SairMouseEntered
+
+    private void LB_SairMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LB_SairMouseExited
+        Painel_Sair.setBackground(Color.WHITE);
+        LB_Sair.setForeground(Color.BLACK);
+    }//GEN-LAST:event_LB_SairMouseExited
+
+    private void LB_SairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LB_SairMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_LB_SairMouseClicked
+
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -1308,8 +1307,10 @@ public class ViewCotacao extends javax.swing.JDialog {
     private javax.swing.JButton BT_Excluir_COT;
     private javax.swing.JButton BT_Excluir_DET;
     private javax.swing.JButton BT_Novo_COT;
-    private javax.swing.JButton BT_Sair;
+    private javax.swing.JComboBox<String> CB_Itens;
+    private javax.swing.JLabel LB_Sair;
     private javax.swing.JTabbedPane PainelGuias;
+    private javax.swing.JPanel Painel_Sair;
     private javax.swing.JTable TB_Cotacoes;
     private javax.swing.JTable TB_ItensCotacao;
     private javax.swing.JTextField edCOD;
@@ -1335,9 +1336,7 @@ public class ViewCotacao extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
@@ -1356,7 +1355,6 @@ public class ViewCotacao extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;

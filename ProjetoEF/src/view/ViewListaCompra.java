@@ -1,8 +1,8 @@
 package view;
 
 import com.placeholder.PlaceHolder;
-import dao.ItensListaDao;
-import dao.ListaDao;
+import dao.ItensListaCompraDao;
+import dao.ListaCompraDao;
 import funcoes.Mensagem;
 import funcoes.Numbers;
 import java.awt.Color;
@@ -20,45 +20,44 @@ import mapeamento.Lista;
  * @author Jerônimo
  */
 public class ViewListaCompra extends javax.swing.JDialog {
-
+    
     Toolkit tk = Toolkit.getDefaultToolkit();
     Dimension d = tk.getScreenSize();
     PlaceHolder holder;
     int Id_lista = 0;
-
+    
     public ViewListaCompra(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         this.setPreferredSize(d);
         initComponents();
         preencherTabela();
         dataAutomatica();
-
+        
         lbID.setVisible(false);
         edID.setVisible(false);
         BT_Atualizar.setVisible(false);
-        BT_Sair.setBorderPainted(false);
-
+        
         holder = new PlaceHolder(edPesquisa, Color.GRAY, new Color(24, 14, 14), "Digite o nome da lista...", isUndecorated(), "Segoe UI", 14);
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icone.png")));
-
+        holder = new PlaceHolder(edPesquisaData, Color.GRAY, new Color(24, 14, 14), "Data inicial...", isUndecorated(), "Segoe UI", 14);
+        
         edQuatidadeDetalhamento.setDocument(new Numbers());
         edValorDetalhamento.setDocument(new Numbers());
         LB_COD.setVisible(false);
         edCODetalhamento.setVisible(false);
         BT_AtualizarDetalhamento.setVisible(false);
     }
-
+    
     public void dataAutomatica() {
         Date data = new Date();
         DateFormat dformdata = DateFormat.getDateInstance();
         edDataInicio.setText(dformdata.format(data));
-
+        
         DateFormat dformhora = DateFormat.getTimeInstance(DateFormat.SHORT);
         edDataInicio.setText(dformhora.format(data));
     }
-
+    
     public void preencherTabela() {
-        ListaDao ldao = new ListaDao();
+        ListaCompraDao ldao = new ListaCompraDao();
         List<Lista> listaLista = ldao.listAll();
         DefaultTableModel tabela = (DefaultTableModel) TB_Listas.getModel();
         tabela.setRowCount(0);
@@ -66,9 +65,9 @@ public class ViewListaCompra extends javax.swing.JDialog {
             tabela.addRow(new Object[]{l.getId_list(), l.getNome(), l.getData_inicial(), l.getData_final()});
         }
     }
-
+    
     public void preencherTabela(String texto) {
-        ListaDao ldao = new ListaDao();
+        ListaCompraDao ldao = new ListaCompraDao();
         List<Lista> listaLista = ldao.listAll(texto);
         DefaultTableModel tabela = (DefaultTableModel) TB_Listas.getModel();
         tabela.setRowCount(0);
@@ -76,42 +75,52 @@ public class ViewListaCompra extends javax.swing.JDialog {
             tabela.addRow(new Object[]{l.getId_list(), l.getNome(), l.getData_inicial(), l.getData_final()});
         }
     }
-
+    
+    public void preencherTabelaData(String data) {
+        ListaCompraDao ldao = new ListaCompraDao();
+        List<Lista> listaLista = ldao.listAllDate(data);
+        DefaultTableModel tabela = (DefaultTableModel) TB_Listas.getModel();
+        tabela.setRowCount(0);
+        for (Lista l : listaLista) {
+            tabela.addRow(new Object[]{l.getId_list(), l.getNome(), l.getData_inicial(), l.getData_final()});
+        }
+    }
+    
     public void preencherTabelaDetalhamento(int id) {
-        ItensListaDao ldao = new ItensListaDao();
+        ItensListaCompraDao ldao = new ItensListaCompraDao();
         List<ItensLista> itensLista = ldao.listAll(id);
         DefaultTableModel tabela = (DefaultTableModel) TB_Detalhamento.getModel();
         tabela.setRowCount(0);
         for (ItensLista ild : itensLista) {
-
+            
             tabela.addRow(new Object[]{ild.getId_iten_list(), ild.getNome(), ild.getQuantidade(), ild.getFornecedor(), ild.getValor()});
         }
     }
-
+    
     public void limparCampos() {
         edNome.setText(null);
         edDataInicio.setText(null);
         edDataFinal.setText(null);
-
+        
         lbID.setVisible(false);
         edID.setVisible(false);
         BT_Atualizar.setVisible(false);
         BT_Criar.setVisible(true);
         dataAutomatica();
     }
-
+    
     public void limparCamposAdicionar() {
         edNomeDetalhamento.setText(null);
         edFornecedorDetalhamento.setText(null);
         edQuatidadeDetalhamento.setText(null);
         edValorDetalhamento.setText(null);
-
+        
         LB_COD.setVisible(false);
         edCODetalhamento.setVisible(false);
         BT_Cadastrar.setVisible(true);
         BT_AtualizarDetalhamento.setVisible(false);
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -128,6 +137,9 @@ public class ViewListaCompra extends javax.swing.JDialog {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         edPesquisa = new javax.swing.JTextField();
+        jPanel11 = new javax.swing.JPanel();
+        edPesquisaData = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
         Novo = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
@@ -178,9 +190,10 @@ public class ViewListaCompra extends javax.swing.JDialog {
         jLabel19 = new javax.swing.JLabel();
         CB_Categoria = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
-        BT_Sair = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        Painel_Sair = new javax.swing.JPanel();
+        LB_Sair = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -301,7 +314,9 @@ public class ViewListaCompra extends javax.swing.JDialog {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pesquisar.png"))); // NOI18N
 
+        edPesquisa.setBackground(new java.awt.Color(255, 255, 255));
         edPesquisa.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        edPesquisa.setForeground(new java.awt.Color(0, 0, 0));
         edPesquisa.setBorder(null);
         edPesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -326,21 +341,54 @@ public class ViewListaCompra extends javax.swing.JDialog {
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jPanel11.setBackground(new java.awt.Color(255, 255, 255));
+
+        edPesquisaData.setBackground(new java.awt.Color(255, 255, 255));
+        edPesquisaData.setForeground(new java.awt.Color(0, 0, 0));
+        edPesquisaData.setBorder(null);
+        edPesquisaData.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                edPesquisaDataKeyReleased(evt);
+            }
+        });
+
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/calendario.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(edPesquisaData, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE))
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(edPesquisaData)
+            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout ListasLayout = new javax.swing.GroupLayout(Listas);
         Listas.setLayout(ListasLayout);
         ListasLayout.setHorizontalGroup(
             ListasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ListasLayout.createSequentialGroup()
                 .addContainerGap(125, Short.MAX_VALUE)
-                .addGroup(ListasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(ListasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(ListasLayout.createSequentialGroup()
                         .addComponent(BT_NovaLista, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(BT_EditarLista, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(BT_DesativarLista, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(BT_DesativarLista, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(159, 159, 159))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, ListasLayout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(126, Short.MAX_VALUE))
         );
         ListasLayout.setVerticalGroup(
@@ -351,11 +399,13 @@ public class ViewListaCompra extends javax.swing.JDialog {
                     .addComponent(BT_NovaLista, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BT_EditarLista, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BT_DesativarLista, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(56, 56, 56)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55)
+                .addGroup(ListasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         PainelGuias.addTab("Listas de compra", Listas);
@@ -978,30 +1028,39 @@ public class ViewListaCompra extends javax.swing.JDialog {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        BT_Sair.setBackground(new java.awt.Color(255, 255, 255));
-        BT_Sair.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        BT_Sair.setForeground(new java.awt.Color(0, 0, 0));
-        BT_Sair.setText("X");
-        BT_Sair.setBorder(null);
-        BT_Sair.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                BT_SairMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                BT_SairMouseExited(evt);
-            }
-        });
-        BT_Sair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BT_SairActionPerformed(evt);
-            }
-        });
-
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/icon.png"))); // NOI18N
 
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Lista de Compra");
+
+        Painel_Sair.setBackground(new java.awt.Color(255, 255, 255));
+
+        LB_Sair.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        LB_Sair.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LB_Sair.setText("X");
+        LB_Sair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LB_SairMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                LB_SairMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                LB_SairMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout Painel_SairLayout = new javax.swing.GroupLayout(Painel_Sair);
+        Painel_Sair.setLayout(Painel_SairLayout);
+        Painel_SairLayout.setHorizontalGroup(
+            Painel_SairLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(LB_Sair, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+        );
+        Painel_SairLayout.setVerticalGroup(
+            Painel_SairLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(LB_Sair, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -1012,13 +1071,13 @@ public class ViewListaCompra extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BT_Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(Painel_Sair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(BT_Sair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Painel_Sair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout PainelBackLayout = new javax.swing.GroupLayout(PainelBack);
@@ -1057,7 +1116,7 @@ public class ViewListaCompra extends javax.swing.JDialog {
     private void BT_NovaListaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_NovaListaMouseEntered
         BT_NovaLista.setBackground(new Color(235, 235, 235));
         BT_NovaLista.setForeground(Color.BLACK);
-        
+
     }//GEN-LAST:event_BT_NovaListaMouseEntered
 
     private void BT_NovaListaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_NovaListaMouseExited
@@ -1086,13 +1145,13 @@ public class ViewListaCompra extends javax.swing.JDialog {
             edNome.setText(TB_Listas.getValueAt(indice, 1).toString());
             edDataInicio.setText(TB_Listas.getValueAt(indice, 2).toString());
             edDataFinal.setText(TB_Listas.getValueAt(indice, 3).toString());
-
+            
             PainelGuias.setSelectedIndex(1);
             BT_Atualizar.setVisible(true);
             BT_Criar.setVisible(false);
             lbID.setVisible(true);
             edID.setVisible(true);
-
+            
         } else {
             msg.Mensagem("Selecione uma linha da tabela!", "SistemaEF diz:", 1);
         }
@@ -1116,11 +1175,11 @@ public class ViewListaCompra extends javax.swing.JDialog {
             list.setNome(TB_Listas.getValueAt(indice, 1).toString());
             list.setData_inicial(TB_Listas.getValueAt(indice, 2).toString());
             list.setData_final(TB_Listas.getValueAt(indice, 3).toString());
-
-            ListaDao ldao = new ListaDao();
+            
+            ListaCompraDao ldao = new ListaCompraDao();
             ldao.deactivate(list);
             preencherTabela();
-
+            
         } else {
             msg.Mensagem("Selecione uma linha da tabela!", "SistemaEF diz:", 1);
         }
@@ -1138,6 +1197,8 @@ public class ViewListaCompra extends javax.swing.JDialog {
     }//GEN-LAST:event_TB_ListasMouseClicked
 
     private void edPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edPesquisaKeyReleased
+        edPesquisaData.setText(null);
+        holder = new PlaceHolder(edPesquisaData, Color.GRAY, new Color(24, 14, 14), "Data inicial...", isUndecorated(), "Segoe UI", 14);
         preencherTabela(edPesquisa.getText());
     }//GEN-LAST:event_edPesquisaKeyReleased
 
@@ -1152,23 +1213,23 @@ public class ViewListaCompra extends javax.swing.JDialog {
     }//GEN-LAST:event_BT_CriarMouseExited
 
     private void BT_CriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_CriarActionPerformed
-
+        
         if (edNome.getText().isEmpty() || edDataInicio.getText().trim().replace(" ", "").length() <= 6 || edDataFinal.getText().trim().replace(" ", "").length() <= 6) {
             msg.Mensagem("Preencha todos os campos!", "SistemaEF diz:", 2);
-
+            
         } else {
             Lista l = new Lista();
             l.setNome(edNome.getText());
             l.setData_inicial(edDataInicio.getText());
             l.setData_final(edDataFinal.getText());
             l.setAtivacao(true);
-
-            ListaDao ld = new ListaDao();
+            
+            ListaCompraDao ld = new ListaCompraDao();
             ld.insert(l);
-
+            
             limparCampos();
             preencherTabela();
-
+            
             PainelGuias.setSelectedIndex(0);
         }
     }//GEN-LAST:event_BT_CriarActionPerformed
@@ -1189,13 +1250,13 @@ public class ViewListaCompra extends javax.swing.JDialog {
         l.setNome(edNome.getText());
         l.setData_inicial(edDataInicio.getText());
         l.setData_final(edDataFinal.getText());
-
-        ListaDao ld = new ListaDao();
+        
+        ListaCompraDao ld = new ListaCompraDao();
         ld.update(l);
-
+        
         limparCampos();
         preencherTabela();
-
+        
         lbID.setVisible(false);
         edID.setVisible(false);
         BT_Criar.setVisible(true);
@@ -1236,13 +1297,13 @@ public class ViewListaCompra extends javax.swing.JDialog {
             edQuatidadeDetalhamento.setText(TB_Detalhamento.getValueAt(indice, 2).toString());
             edFornecedorDetalhamento.setText(TB_Detalhamento.getValueAt(indice, 3).toString());
             edValorDetalhamento.setText(TB_Detalhamento.getValueAt(indice, 4).toString());
-
+            
             LB_COD.setVisible(true);
             edCODetalhamento.setVisible(true);
             BT_AtualizarDetalhamento.setVisible(true);
             BT_Cadastrar.setVisible(false);
             PainelGuias.setSelectedIndex(3);
-
+            
         } else {
             msg.Mensagem("Selecione uma linha da tabela!", "SistemaEF diz:", 1);
         }
@@ -1264,11 +1325,11 @@ public class ViewListaCompra extends javax.swing.JDialog {
             ItensLista itenList = new ItensLista();
             itenList.setId_iten_list(Integer.parseInt(TB_Detalhamento.getValueAt(indice, 0).toString()));
             itenList.setNome(TB_Detalhamento.getValueAt(indice, 1).toString());
-
-            ItensListaDao itenListDao = new ItensListaDao();
+            
+            ItensListaCompraDao itenListDao = new ItensListaCompraDao();
             itenListDao.deactivate(itenList);
             preencherTabelaDetalhamento(Id_lista);
-
+            
         } else {
             msg.Mensagem("Selecione uma linha da tabela!", "SistemaEF diz:", 1);
         }
@@ -1282,20 +1343,6 @@ public class ViewListaCompra extends javax.swing.JDialog {
         BT_AdicionarItem.setBackground(new Color(30, 144, 255));
     }//GEN-LAST:event_BT_AdicionarItemMouseExited
 
-    private void BT_SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_SairActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_BT_SairActionPerformed
-
-    private void BT_SairMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_SairMouseEntered
-        BT_Sair.setBackground(Color.RED);
-        BT_Sair.setForeground(Color.WHITE);
-    }//GEN-LAST:event_BT_SairMouseEntered
-
-    private void BT_SairMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_SairMouseExited
-        BT_Sair.setBackground(Color.WHITE);
-        BT_Sair.setForeground(Color.BLACK);
-    }//GEN-LAST:event_BT_SairMouseExited
-
     private void BT_AdicionarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_AdicionarItemActionPerformed
         PainelGuias.setSelectedIndex(3);
     }//GEN-LAST:event_BT_AdicionarItemActionPerformed
@@ -1303,7 +1350,7 @@ public class ViewListaCompra extends javax.swing.JDialog {
     private void BT_CadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_CadastrarActionPerformed
         if (edNomeDetalhamento.getText().isEmpty() || edQuatidadeDetalhamento.getText().isEmpty() || CB_Categoria.getSelectedIndex() == -1) {
             msg.Mensagem("Os seguintes campos são obrigatórios: Nome do Item, Quantidade e Categoria do produto. Por favor, os preencha!", "SistemaEF diz:", 1);
-
+            
         } else {
             ItensLista il = new ItensLista();
             il.setNome(edNomeDetalhamento.getText());
@@ -1320,15 +1367,15 @@ public class ViewListaCompra extends javax.swing.JDialog {
                     il.setAvaliacao_sd(1);
                 }
             }
-
+            
             il.setFk_id_lista(Id_lista);
-            ItensListaDao ild = new ItensListaDao();
+            ItensListaCompraDao ild = new ItensListaCompraDao();
             ild.insert(il);
-
+            
             preencherTabelaDetalhamento(Id_lista);
             limparCamposAdicionar();
             PainelGuias.setSelectedIndex(2);
-
+            
         }
     }//GEN-LAST:event_BT_CadastrarActionPerformed
 
@@ -1371,6 +1418,26 @@ public class ViewListaCompra extends javax.swing.JDialog {
         BT_CancelarDetalhamento.setForeground(Color.WHITE);
     }//GEN-LAST:event_BT_CancelarDetalhamentoMouseExited
 
+    private void LB_SairMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LB_SairMouseEntered
+        Painel_Sair.setBackground(Color.RED);
+        LB_Sair.setForeground(Color.WHITE);
+    }//GEN-LAST:event_LB_SairMouseEntered
+
+    private void LB_SairMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LB_SairMouseExited
+        Painel_Sair.setBackground(Color.WHITE);
+        LB_Sair.setForeground(Color.BLACK);
+    }//GEN-LAST:event_LB_SairMouseExited
+
+    private void LB_SairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LB_SairMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_LB_SairMouseClicked
+
+    private void edPesquisaDataKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edPesquisaDataKeyReleased
+        edPesquisa.setText(null);
+        holder = new PlaceHolder(edPesquisa, Color.GRAY, new Color(24, 14, 14), "Digite o nome da lista...", isUndecorated(), "Segoe UI", 14);
+        preencherTabelaData(edPesquisaData.getText());
+    }//GEN-LAST:event_edPesquisaDataKeyReleased
+    
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -1420,15 +1487,16 @@ public class ViewListaCompra extends javax.swing.JDialog {
     private javax.swing.JButton BT_EditarItem;
     private javax.swing.JButton BT_EditarLista;
     private javax.swing.JButton BT_NovaLista;
-    private javax.swing.JButton BT_Sair;
     private javax.swing.JComboBox<String> CB_Categoria;
     private javax.swing.JPanel Detalhamento;
     private javax.swing.JLabel LB_COD;
+    private javax.swing.JLabel LB_Sair;
     private javax.swing.JPanel Listas;
     private javax.swing.JPanel Novo;
     private javax.swing.JPanel PainelBack;
     private javax.swing.JPanel PainelDataFinal;
     private javax.swing.JTabbedPane PainelGuias;
+    private javax.swing.JPanel Painel_Sair;
     private javax.swing.JTable TB_Detalhamento;
     private javax.swing.JTable TB_Listas;
     private javax.swing.JTextField edCODetalhamento;
@@ -1439,6 +1507,7 @@ public class ViewListaCompra extends javax.swing.JDialog {
     private javax.swing.JTextField edNome;
     private javax.swing.JTextField edNomeDetalhamento;
     private javax.swing.JTextField edPesquisa;
+    private javax.swing.JTextField edPesquisaData;
     private javax.swing.JTextField edQuatidadeDetalhamento;
     private javax.swing.JTextField edValorDetalhamento;
     private javax.swing.JLabel jLabel1;
@@ -1457,11 +1526,13 @@ public class ViewListaCompra extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;

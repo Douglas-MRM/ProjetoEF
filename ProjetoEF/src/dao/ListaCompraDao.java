@@ -14,7 +14,7 @@ import mapeamento.Lista;
  *
  * @author Jerônimo
  */
-public class ListaDao {
+public class ListaCompraDao {
 
     public void insert(Lista list) {
         Connection con = ConexaoMySql.getConexao();
@@ -29,6 +29,7 @@ public class ListaDao {
             con.close();
 
             msg.Mensagem("Lista criada com sucesso!", "SistemaEF diz:", 1);
+            msg.Mensagem("Cotação criada para esta Lista: " + list.getNome() + "!", "SistemaEF diz:", 1);
         } catch (Exception e) {
             msg.Mensagem("Não foi possível criar a lista!", "SistemaEF diz:", 0);
         }
@@ -107,6 +108,57 @@ public class ListaDao {
         try (PreparedStatement stm = con.prepareStatement(sql)) {
             stm.setBoolean(1, true);
             stm.setString(2, "%" + texto + "%");
+            ResultSet re = stm.executeQuery();
+            while (re.next()) {
+                Lista list = new Lista();
+                list.setId_list(re.getInt("lista.id_list"));
+                list.setNome(re.getString("lista.nome_list"));
+                list.setData_inicial(re.getString("lista.data_inicial_list"));
+                list.setData_final(re.getString("lista.data_final_list"));
+                list.setAtivacao(re.getBoolean("lista.fk_ativacao"));
+
+                listList.add(list);
+            }
+        } catch (Exception e) {
+            msg.Mensagem("Falha ao buscar os registros!", "SistemaEF diz:" + e, 0);
+        }
+        return listList;
+    }
+
+    public List<Lista> listAllDate(String data) {
+        Connection con = ConexaoMySql.getConexao();
+        String sql = "SELECT * FROM lista WHERE fk_ativacao = ? AND data_inicial_list LIKE ? ORDER BY id_list";
+        List<Lista> listList = new ArrayList();
+
+        try (PreparedStatement stm = con.prepareStatement(sql)) {
+            stm.setBoolean(1, true);
+            stm.setString(2, "%" + data + "%");
+            ResultSet re = stm.executeQuery();
+            while (re.next()) {
+                Lista list = new Lista();
+                list.setId_list(re.getInt("lista.id_list"));
+                list.setNome(re.getString("lista.nome_list"));
+                list.setData_inicial(re.getString("lista.data_inicial_list"));
+                list.setData_final(re.getString("lista.data_final_list"));
+                list.setAtivacao(re.getBoolean("lista.fk_ativacao"));
+
+                listList.add(list);
+            }
+        } catch (Exception e) {
+            msg.Mensagem("Falha ao buscar os registros!", "SistemaEF diz:" + e, 0);
+        }
+        return listList;
+    }
+
+    public List<Lista> listTeste(String texto, String data) {
+        Connection con = ConexaoMySql.getConexao();
+        String sql = "SELECT * FROM lista WHERE fk_ativacao = ? AND nome_list LIKE ? AND data_inicial_list LIKE ? ORDER BY id_list";
+        List<Lista> listList = new ArrayList();
+
+        try (PreparedStatement stm = con.prepareStatement(sql)) {
+            stm.setBoolean(1, true);
+            stm.setString(2, "%" + texto + "%");
+            stm.setString(3, "%" + data + "%");
             ResultSet re = stm.executeQuery();
             while (re.next()) {
                 Lista list = new Lista();

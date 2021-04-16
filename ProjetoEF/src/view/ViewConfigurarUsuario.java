@@ -27,8 +27,8 @@ public class ViewConfigurarUsuario extends javax.swing.JFrame {
         PainelBack = new javax.swing.JPanel();
         PainelTop = new javax.swing.JPanel();
         LB_Titulo = new javax.swing.JLabel();
-        BT_Sair = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         LB_Nome = new javax.swing.JLabel();
         LB_Email = new javax.swing.JLabel();
         LB_NovaSenha = new javax.swing.JLabel();
@@ -50,28 +50,21 @@ public class ViewConfigurarUsuario extends javax.swing.JFrame {
 
         LB_Titulo.setText("Configurarar Usuário");
 
-        BT_Sair.setBackground(new java.awt.Color(255, 255, 255));
-        BT_Sair.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        BT_Sair.setText("X");
-        BT_Sair.setActionCommand("");
-        BT_Sair.setBorder(null);
-        BT_Sair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        BT_Sair.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                BT_SairMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                BT_SairMouseExited(evt);
-            }
-        });
-        BT_Sair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BT_SairActionPerformed(evt);
-            }
-        });
-
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/icon.png"))); // NOI18N
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 45, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout PainelTopLayout = new javax.swing.GroupLayout(PainelTop);
         PainelTop.setLayout(PainelTopLayout);
@@ -82,13 +75,16 @@ public class ViewConfigurarUsuario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(LB_Titulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BT_Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         PainelTopLayout.setVerticalGroup(
             PainelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(LB_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(BT_Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(PainelTopLayout.createSequentialGroup()
+                .addGroup(PainelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LB_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         LB_Nome.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -194,20 +190,6 @@ public class ViewConfigurarUsuario extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BT_SairMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_SairMouseEntered
-        BT_Sair.setBackground(Color.RED);
-        BT_Sair.setForeground(Color.WHITE);
-    }//GEN-LAST:event_BT_SairMouseEntered
-
-    private void BT_SairMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_SairMouseExited
-        BT_Sair.setBackground(Color.WHITE);
-        BT_Sair.setForeground(Color.BLACK);
-    }//GEN-LAST:event_BT_SairMouseExited
-
-    private void BT_SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_SairActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_BT_SairActionPerformed
-
 //    public static void main(String args[]) {
 //        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
 //        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -240,7 +222,6 @@ public class ViewConfigurarUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BT_Atualizar;
     private javax.swing.JButton BT_Cancelar;
-    private javax.swing.JButton BT_Sair;
     private javax.swing.JLabel LB_ConfirmarSenha;
     private javax.swing.JLabel LB_Email;
     private javax.swing.JLabel LB_Nome;
@@ -254,5 +235,10 @@ public class ViewConfigurarUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField edNome;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     // End of variables declaration//GEN-END:variables
 }

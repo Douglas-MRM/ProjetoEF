@@ -32,6 +32,23 @@ public class SuperiorDiretoDao {
             msg.Mensagem("Não foi possível fazer a atualização!" + e, "SistemaEF diz:", 0);
         }
     }
+    
+    public void AttSituacao(Lista list) {
+        Connection con = ConexaoMySql.getConexao();
+        String sql = "UPDATE itens_lista SET fk_avaliacao_sd = ? WHERE id_iten_list = ?";
+        try (PreparedStatement stm = con.prepareStatement(sql)) {
+            stm.setInt(1, 3);
+            stm.setInt(2, list.getId_list());
+
+            stm.executeUpdate();
+            stm.close();
+            con.close();
+            msg.Mensagem("Produto autorizado e inserido na lista de compra!", "SistemaEF diz:", 1);
+
+        } catch (Exception e) {
+            msg.Mensagem("Não foi possível fazer a atualização!" + e, "SistemaEF diz:", 0);
+        }
+    }
 
     public void recuse(Lista list) {
         Connection con = ConexaoMySql.getConexao();

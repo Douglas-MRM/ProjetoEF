@@ -38,7 +38,8 @@ public class ViewUsuario extends javax.swing.JDialog {
         PainelTop = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        BT_Sair = new javax.swing.JButton();
+        Painel_Sair = new javax.swing.JPanel();
+        LB_Sair = new javax.swing.JLabel();
         PanelGuias = new javax.swing.JTabbedPane();
         Cadastro = new javax.swing.JPanel();
         LB_Senha = new javax.swing.JLabel();
@@ -78,24 +79,34 @@ public class ViewUsuario extends javax.swing.JDialog {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Usuário");
 
-        BT_Sair.setBackground(new java.awt.Color(255, 255, 255));
-        BT_Sair.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        BT_Sair.setForeground(new java.awt.Color(0, 0, 0));
-        BT_Sair.setText("X");
-        BT_Sair.setBorder(null);
-        BT_Sair.addMouseListener(new java.awt.event.MouseAdapter() {
+        Painel_Sair.setBackground(new java.awt.Color(255, 255, 255));
+
+        LB_Sair.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        LB_Sair.setForeground(new java.awt.Color(0, 0, 0));
+        LB_Sair.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LB_Sair.setText("X");
+        LB_Sair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LB_SairMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                BT_SairMouseEntered(evt);
+                LB_SairMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                BT_SairMouseExited(evt);
+                LB_SairMouseExited(evt);
             }
         });
-        BT_Sair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BT_SairActionPerformed(evt);
-            }
-        });
+
+        javax.swing.GroupLayout Painel_SairLayout = new javax.swing.GroupLayout(Painel_Sair);
+        Painel_Sair.setLayout(Painel_SairLayout);
+        Painel_SairLayout.setHorizontalGroup(
+            Painel_SairLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(LB_Sair, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+        );
+        Painel_SairLayout.setVerticalGroup(
+            Painel_SairLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(LB_Sair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout PainelTopLayout = new javax.swing.GroupLayout(PainelTop);
         PainelTop.setLayout(PainelTopLayout);
@@ -106,13 +117,13 @@ public class ViewUsuario extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BT_Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(Painel_Sair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         PainelTopLayout.setVerticalGroup(
             PainelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(BT_Sair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel2)
+            .addComponent(Painel_Sair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         Cadastro.setBackground(new java.awt.Color(57, 69, 81));
@@ -307,7 +318,6 @@ public class ViewUsuario extends javax.swing.JDialog {
                 .addGroup(CadastroLayout.createSequentialGroup()
                     .addGap(81, 81, 81)
                     .addGroup(CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(LB_Icone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(CadastroLayout.createSequentialGroup()
                             .addGap(0, 163, Short.MAX_VALUE)
                             .addGroup(CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -328,7 +338,10 @@ public class ViewUsuario extends javax.swing.JDialog {
                                 .addComponent(LB_Senha)
                                 .addComponent(PainelNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(0, 163, Short.MAX_VALUE))
-                        .addComponent(LB_Title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(LB_Title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(CadastroLayout.createSequentialGroup()
+                            .addComponent(LB_Icone, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, Short.MAX_VALUE)))
                     .addGap(81, 81, 81)))
         );
         CadastroLayout.setVerticalGroup(
@@ -415,27 +428,13 @@ public class ViewUsuario extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BT_SairMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_SairMouseEntered
-        BT_Sair.setBackground(Color.RED);
-        BT_Sair.setForeground(Color.WHITE);
-    }//GEN-LAST:event_BT_SairMouseEntered
-
-    private void BT_SairMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_SairMouseExited
-        BT_Sair.setBackground(Color.WHITE);
-        BT_Sair.setForeground(Color.BLACK);
-    }//GEN-LAST:event_BT_SairMouseExited
-
-    private void BT_SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_SairActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_BT_SairActionPerformed
-
     private void BT_CadastrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_CadastrarMouseEntered
         BT_Cadastrar.setBackground(new Color(255, 255, 255));
         BT_Cadastrar.setForeground(new Color(30, 144, 255));
     }//GEN-LAST:event_BT_CadastrarMouseEntered
 
     private void BT_CadastrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_CadastrarMouseExited
-        BT_Cadastrar.setBackground(new Color(30,144,255));
+        BT_Cadastrar.setBackground(new Color(30, 144, 255));
         BT_Cadastrar.setForeground(Color.WHITE);
     }//GEN-LAST:event_BT_CadastrarMouseExited
 
@@ -477,6 +476,20 @@ public class ViewUsuario extends javax.swing.JDialog {
         limparCampos();
     }//GEN-LAST:event_BT_CancelarActionPerformed
 
+    private void LB_SairMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LB_SairMouseEntered
+        Painel_Sair.setBackground(Color.RED);
+        LB_Sair.setForeground(Color.WHITE);
+    }//GEN-LAST:event_LB_SairMouseEntered
+
+    private void LB_SairMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LB_SairMouseExited
+        Painel_Sair.setBackground(Color.WHITE);
+        LB_Sair.setForeground(Color.BLACK);
+    }//GEN-LAST:event_LB_SairMouseExited
+
+    private void LB_SairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LB_SairMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_LB_SairMouseClicked
+
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -516,7 +529,6 @@ public class ViewUsuario extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BT_Cadastrar;
     private javax.swing.JButton BT_Cancelar;
-    private javax.swing.JButton BT_Sair;
     private javax.swing.JComboBox<String> CB_Type;
     private javax.swing.JPanel Cadastro;
     private javax.swing.JPanel Gerenciador;
@@ -524,6 +536,7 @@ public class ViewUsuario extends javax.swing.JDialog {
     private javax.swing.JLabel LB_Email;
     private javax.swing.JLabel LB_Icone;
     private javax.swing.JLabel LB_Nome;
+    private javax.swing.JLabel LB_Sair;
     private javax.swing.JLabel LB_Senha;
     private javax.swing.JLabel LB_Title;
     private javax.swing.JLabel LB_Type;
@@ -533,6 +546,7 @@ public class ViewUsuario extends javax.swing.JDialog {
     private javax.swing.JPanel PainelNome;
     private javax.swing.JPanel PainelSenha;
     private javax.swing.JPanel PainelTop;
+    private javax.swing.JPanel Painel_Sair;
     private javax.swing.JTabbedPane PanelGuias;
     private javax.swing.JFormattedTextField edCPF;
     private javax.swing.JTextField edEmail;

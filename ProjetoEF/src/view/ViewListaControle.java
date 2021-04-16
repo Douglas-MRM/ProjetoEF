@@ -33,11 +33,12 @@ public class ViewListaControle extends javax.swing.JDialog {
 
         lbID.setVisible(false);
         edID.setVisible(false);
+        LB_COD.setVisible(false);
+        ED_COD.setVisible(false);
         BT_Atualizar.setVisible(false);
         BT_Atualizar_DET.setVisible(false);
 
         holder = new PlaceHolder(edPesquisa, Color.GRAY, new Color(24, 14, 14), "Digite o nome da lista...", isUndecorated(), "Segoe UI", 14);
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icone.png")));
     }
 
     public void dataAutomatica() {
@@ -132,9 +133,7 @@ public class ViewListaControle extends javax.swing.JDialog {
         BT_EditarDetalhamento = new javax.swing.JButton();
         BT_DesativarDetalhamento = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        LB_COD = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jTextField2 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -150,10 +149,12 @@ public class ViewListaControle extends javax.swing.JDialog {
         BT_Adicionar_DET = new javax.swing.JButton();
         BT_Atualizar_DET = new javax.swing.JButton();
         BT_Cancelar_DET = new javax.swing.JButton();
+        ED_COD = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        BT_Sair = new javax.swing.JButton();
+        Painel_Sair = new javax.swing.JPanel();
+        LB_Sair = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Listas de Controle");
@@ -299,15 +300,18 @@ public class ViewListaControle extends javax.swing.JDialog {
             AgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AgendaLayout.createSequentialGroup()
                 .addContainerGap(147, Short.MAX_VALUE)
-                .addGroup(AgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(AgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(AgendaLayout.createSequentialGroup()
-                        .addComponent(BT_Novo, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(BT_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(BT_Desativar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(AgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(AgendaLayout.createSequentialGroup()
+                                .addComponent(BT_Novo, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(BT_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(BT_Desativar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(160, 160, 160)))
                 .addContainerGap(147, Short.MAX_VALUE))
         );
         AgendaLayout.setVerticalGroup(
@@ -322,7 +326,7 @@ public class ViewListaControle extends javax.swing.JDialog {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         PainelGuias.addTab("Listas de controle", Agenda);
@@ -685,31 +689,12 @@ public class ViewListaControle extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        PainelGuias.addTab("Detalhamento da lista", Detalhamento);
+        PainelGuias.addTab("Detalhamento do controle", Detalhamento);
 
         jPanel6.setBackground(new java.awt.Color(57, 69, 81));
 
-        jLabel7.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        jLabel7.setText("COD");
-
-        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
-
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField1.setBorder(null);
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addGap(0, 30, Short.MAX_VALUE)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-        );
+        LB_COD.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        LB_COD.setText("COD");
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -869,6 +854,10 @@ public class ViewListaControle extends javax.swing.JDialog {
             }
         });
 
+        ED_COD.setBackground(new java.awt.Color(255, 255, 255));
+        ED_COD.setForeground(new java.awt.Color(0, 0, 0));
+        ED_COD.setBorder(null);
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -876,11 +865,6 @@ public class ViewListaControle extends javax.swing.JDialog {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap(180, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel6Layout.createSequentialGroup()
@@ -901,7 +885,12 @@ public class ViewListaControle extends javax.swing.JDialog {
                                     .addComponent(jLabel10)
                                     .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addContainerGap(181, Short.MAX_VALUE))))
+                        .addContainerGap(181, Short.MAX_VALUE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LB_COD)
+                            .addComponent(ED_COD, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -917,10 +906,10 @@ public class ViewListaControle extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
+                        .addComponent(LB_COD)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(ED_COD, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -933,7 +922,7 @@ public class ViewListaControle extends javax.swing.JDialog {
                     .addComponent(BT_Atualizar_DET, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BT_Adicionar_DET, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BT_Cancelar_DET, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
 
         PainelGuias.addTab("Adicionar", jPanel6);
@@ -947,24 +936,34 @@ public class ViewListaControle extends javax.swing.JDialog {
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Lista de Controle");
 
-        BT_Sair.setBackground(new java.awt.Color(255, 255, 255));
-        BT_Sair.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        BT_Sair.setForeground(new java.awt.Color(0, 0, 0));
-        BT_Sair.setText("X");
-        BT_Sair.setBorder(null);
-        BT_Sair.addMouseListener(new java.awt.event.MouseAdapter() {
+        Painel_Sair.setBackground(new java.awt.Color(255, 255, 255));
+
+        LB_Sair.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        LB_Sair.setForeground(new java.awt.Color(0, 0, 0));
+        LB_Sair.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LB_Sair.setText("X");
+        LB_Sair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LB_SairMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                BT_SairMouseEntered(evt);
+                LB_SairMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                BT_SairMouseExited(evt);
+                LB_SairMouseExited(evt);
             }
         });
-        BT_Sair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BT_SairActionPerformed(evt);
-            }
-        });
+
+        javax.swing.GroupLayout Painel_SairLayout = new javax.swing.GroupLayout(Painel_Sair);
+        Painel_Sair.setLayout(Painel_SairLayout);
+        Painel_SairLayout.setHorizontalGroup(
+            Painel_SairLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(LB_Sair, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+        );
+        Painel_SairLayout.setVerticalGroup(
+            Painel_SairLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(LB_Sair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -975,13 +974,13 @@ public class ViewListaControle extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BT_Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(Painel_Sair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(BT_Sair, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel6)
+            .addComponent(Painel_Sair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout PainelBackLayout = new javax.swing.GroupLayout(PainelBack);
@@ -1214,20 +1213,6 @@ public class ViewListaControle extends javax.swing.JDialog {
 
     }//GEN-LAST:event_BT_DesativarDetalhamentoActionPerformed
 
-    private void BT_SairMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_SairMouseEntered
-        BT_Sair.setBackground(Color.RED);
-        BT_Sair.setForeground(Color.WHITE);
-    }//GEN-LAST:event_BT_SairMouseEntered
-
-    private void BT_SairMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_SairMouseExited
-        BT_Sair.setBackground(Color.WHITE);
-        BT_Sair.setForeground(Color.BLACK);
-    }//GEN-LAST:event_BT_SairMouseExited
-
-    private void BT_SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_SairActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_BT_SairActionPerformed
-
     private void BT_Adicionar_DETMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_Adicionar_DETMouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_BT_Adicionar_DETMouseEntered
@@ -1267,6 +1252,20 @@ public class ViewListaControle extends javax.swing.JDialog {
     private void BT_AdicionarDetalhamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_AdicionarDetalhamentoActionPerformed
         PainelGuias.setSelectedIndex(3);
     }//GEN-LAST:event_BT_AdicionarDetalhamentoActionPerformed
+
+    private void LB_SairMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LB_SairMouseEntered
+        Painel_Sair.setBackground(Color.RED);
+        LB_Sair.setForeground(Color.WHITE);
+    }//GEN-LAST:event_LB_SairMouseEntered
+
+    private void LB_SairMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LB_SairMouseExited
+        Painel_Sair.setBackground(Color.WHITE);
+        LB_Sair.setForeground(Color.BLACK);
+    }//GEN-LAST:event_LB_SairMouseExited
+
+    private void LB_SairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LB_SairMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_LB_SairMouseClicked
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1321,11 +1320,14 @@ public class ViewListaControle extends javax.swing.JDialog {
     private javax.swing.JButton BT_Editar;
     private javax.swing.JButton BT_EditarDetalhamento;
     private javax.swing.JButton BT_Novo;
-    private javax.swing.JButton BT_Sair;
     private javax.swing.JPanel Detalhamento;
+    private javax.swing.JTextField ED_COD;
+    private javax.swing.JLabel LB_COD;
+    private javax.swing.JLabel LB_Sair;
     private javax.swing.JPanel PainelBack;
     private javax.swing.JPanel PainelDataFinal;
     private javax.swing.JTabbedPane PainelGuias;
+    private javax.swing.JPanel Painel_Sair;
     private javax.swing.JTable TB_Controle;
     private javax.swing.JTable TB_Detalhamento;
     private javax.swing.JFormattedTextField edDataFinal;
@@ -1346,7 +1348,6 @@ public class ViewListaControle extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -1357,12 +1358,10 @@ public class ViewListaControle extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JLabel lbID;

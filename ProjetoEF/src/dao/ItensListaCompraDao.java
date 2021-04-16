@@ -14,7 +14,7 @@ import mapeamento.ItensLista;
  *
  * @author Jerônimo
  */
-public class ItensListaDao {
+public class ItensListaCompraDao {
 
     public void insert(ItensLista itenList) {
         Connection con = ConexaoMySql.getConexao();
@@ -69,7 +69,7 @@ public class ItensListaDao {
     public List<ItensLista> listAll(int id) {
         Connection con = ConexaoMySql.getConexao();
         String sql = "SELECT * FROM itens_lista WHERE (fk_id_list = ? AND fk_ativacao = ?) AND (fk_avaliacao_sd is null OR fk_avaliacao_sd = ?)";
-        
+
         List<ItensLista> itensLista = new ArrayList();
 
         try (PreparedStatement stm = con.prepareStatement(sql)) {
